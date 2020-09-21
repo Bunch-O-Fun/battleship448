@@ -148,8 +148,6 @@ void Board::guessConversion(std::string userGuess)
 	for(unsigned int i=0;i<m_rowNames.length();i++)	
 	{
 		if(userGuess.at(0) == m_rowNames.at(i) ||userGuess.at(0) == (tolower(m_rowNames.at(i))))	
-			
-
 		{
 			m_columnIndex = i;	
 			break;
@@ -170,6 +168,7 @@ void Board::guessConversion(std::string userGuess)
 
 bool Board::withinBoundary(std::string userGuess) //true for userGuess within bounds of the board
 {
+	
 	if(userGuess.length() != 2)
 		{
 			return false;
@@ -248,9 +247,9 @@ void Board::setupBoard()
 					printMyBoard();	
 					std::cout<<"Where would you like to place this ship of size 1? Enter your coordinate: ";
 					std::getline(std::cin, userGuess);	
-
+					
 					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper); 
-
+					
 					if(!withinBoundary(userGuess))	
 					{
 						std::cout << "Wrong coordinate! Try again.\n";
