@@ -57,6 +57,7 @@ void Board::printMyBoard()	//prints the player's board
 			std::cout << "\n\n";
 		}
 	}
+	printMyScoreBoard();
 }
 
 void Board::printMyScoreBoard()
@@ -64,7 +65,7 @@ void Board::printMyScoreBoard()
 	std::cout<<"\n";
 	std::cout<<"=========SCOREBOARD==========\n";
 	std::cout<<"Ship Status: ";
-	if (numberOfShips == 1)
+	if (numberOfShips == 1 || 2)
 	{
 		if (m_ship->isSunk() == 1)
 			{
