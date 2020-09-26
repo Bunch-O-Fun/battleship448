@@ -13,7 +13,7 @@ Board::Board(int shipnum)
 	blueTilde = "\033[1;36m~\033[0m";	//blue water color
 	redHit = "\033[1;31mX\033[0m";	//red ship hit color
 	whiteMiss = "\033[1;37mO\033[0m";		//white missed shot color
-	ship = "\033[1;32m∆\033[0m";	//green ship color 
+	ship = "\033[1;32m∆\033[0m";	//green ship color
 
 	for (int i=0; i<9; i++)	//initializes myBoard and shotBoard to a grid of blue water
 	{
@@ -30,7 +30,7 @@ Board::~Board()	//destructor to delete m_ship
 	delete[] m_ship;
 }
 
-void Board::printMyBoard()	//prints the player's board 
+void Board::printMyBoard()	//prints the player's board
 {
 	std::cout << "\t\t\tYour board\n";
 	std::cout << "\t";
@@ -94,7 +94,7 @@ bool Board::updateMyBoard(std::string userGuess)	//updates the current player bo
 	return false;	//if there were no hits, then this runs and we return false because it was a miss
 }
 
-void Board::printShotBoard()	//prints rival board 
+void Board::printShotBoard()	//prints rival board
 {
 	std::cout << "\n\t\t\tYour Rival's board\n";
 	std::cout << '\t';
@@ -113,7 +113,7 @@ std::cout << "\n";
 		}
 		if(i != 8)
 		{
-			std::cout << "\n\n\n"; //space b/w rows 
+			std::cout << "\n\n\n"; //space b/w rows
 		}
 		else
 		{
@@ -122,9 +122,9 @@ std::cout << "\n";
   }
 }
 
-void Board::updateShotBoard(std::string userGuess, bool wasHit)	
+void Board::updateShotBoard(std::string userGuess, bool wasHit)
 {
-	guessConversion(userGuess);	
+	guessConversion(userGuess);
 	if(wasHit)	//redHit for hit
 	{
 		shotBoard[m_rowIndex][m_columnIndex] = redHit;
@@ -145,16 +145,16 @@ void Board::guessConversion(std::string userGuess)
 	}
 	else
 	{
-	for(unsigned int i=0;i<m_rowNames.length();i++)	
+	for(unsigned int i=0;i<m_rowNames.length();i++)
 	{
-		if(userGuess.at(0) == m_rowNames.at(i) ||userGuess.at(0) == (tolower(m_rowNames.at(i))))	
+		if(userGuess.at(0) == m_rowNames.at(i) ||userGuess.at(0) == (tolower(m_rowNames.at(i))))
 		{
-			m_columnIndex = i;	
+			m_columnIndex = i;
 			break;
 		}
 		else
 		{
-			m_columnIndex = 10; 
+			m_columnIndex = 10;
 		}
 
 	}
@@ -168,28 +168,28 @@ void Board::guessConversion(std::string userGuess)
 
 bool Board::withinBoundary(std::string userGuess) //true for userGuess within bounds of the board
 {
-	
+
 	if(userGuess.length() != 2)
 		{
 			return false;
 		}
 		else
 		{
-			guessConversion(userGuess);	
+			guessConversion(userGuess);
 			if((0 <= m_rowIndex && m_rowIndex <= 8) && (0 <= m_columnIndex && m_columnIndex <= 8))
 			{
-				return true;	
+				return true;
 			}
 			else
 			{
-				return false;	
+				return false;
 			}
 		}
 }
 
-bool Board::noHorizontalCollision(std::string userGuess, int shipLength)	
+bool Board::noHorizontalCollision(std::string userGuess, int shipLength)
 {
-	guessConversion(userGuess);	
+	guessConversion(userGuess);
 	for(int i = 0; i < shipLength; i++)
  {
 	if((0 <= m_rowIndex && m_rowIndex <= 8) && (0 <= m_columnIndex + i && m_columnIndex + i <= 8))	//checks indices within boundary
@@ -209,10 +209,10 @@ bool Board::noHorizontalCollision(std::string userGuess, int shipLength)
 
 bool Board::noVerticalCollision(std::string userGuess, int shipLength)
 {
-	guessConversion(userGuess);	
+	guessConversion(userGuess);
 	for(int i = 0; i < shipLength; i++)
  {
-	if((0 <= m_rowIndex + i && m_rowIndex + i <= 8) && (0 <= m_columnIndex && m_columnIndex <= 8))	
+	if((0 <= m_rowIndex + i && m_rowIndex + i <= 8) && (0 <= m_columnIndex && m_columnIndex <= 8))
 		{
 		if(myBoard[m_rowIndex + i][m_columnIndex] != blueTilde)	//false if not on water
 			{
@@ -227,90 +227,90 @@ bool Board::noVerticalCollision(std::string userGuess, int shipLength)
  return true;	//if passes all checks, no collision
 }
 
-void Board::setupBoard()	
+void Board::setupBoard()
 {
-	std::string userGuess;	
-	std::string userDirection;	
-	bool validLocation = false;	
-	std::string temp; 		
-	bool HorV = false; 
+	std::string userGuess;
+	std::string userDirection;
+	bool validLocation = false;
+	std::string temp;
+	bool HorV = false;
 
-	m_ship =  new Ship[numberOfShips];	
+	m_ship =  new Ship[numberOfShips];
 	for(int i = 0; i < numberOfShips; i++)
 	{
-		m_ship[i].createShip(i+1);	
-		if(m_ship[i].getLength() == 1)	
+		m_ship[i].createShip(i+1);
+		if(m_ship[i].getLength() == 1)
 		{
-			userGuess = " ";	
+			userGuess = " ";
 
 				do {
-					printMyBoard();	
-					std::cout<<"Where would you like to place this ship of size 1? Enter your coordinate: ";
-					std::getline(std::cin, userGuess);	
-					
-					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper); 
-					
-					if(!withinBoundary(userGuess))	
+					printMyBoard();
+					std::cout<<"Where would you like to place this ship of size 1? Enter your coordinate: (LETTER,NUMBER)\n";
+					std::getline(std::cin, userGuess);
+
+					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
+
+					if(!withinBoundary(userGuess))
 					{
-						std::cout << "Wrong coordinate! Try again.\n";
+							std::cout << "Invalid Location, Try again!\n";
 					}
 
-				} while(!withinBoundary(userGuess));	
+				} while(!withinBoundary(userGuess));
 
-					myBoard[m_rowIndex][m_columnIndex] = ship;	
-					m_ship[i].setCoordinate(userGuess, 0);	
-					printMyBoard();	
+					myBoard[m_rowIndex][m_columnIndex] = ship;
+					m_ship[i].setCoordinate(userGuess, 0);
+					printMyBoard();
 
 
 		}
 		else
 		{
-			std::cout<<"which way do you want this ship? HORIZONTAL(H/h) OR VERTICAL(V/v) ship size:" <<i+1 <<": ";
-			std::getline(std::cin, userDirection);	
+			std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)";
+			std::getline(std::cin, userDirection);
 
 			do
 			{
-				HorV = false;	
+				HorV = false;
 
 				if(userDirection == "H" || userDirection == "h")
 				{
-					validLocation = false; 
+					validLocation = false;
 
-					std::cout<<"Type in left most coordinate of this ship on the board to place it? ";
+					std::cout<<"Type in the left most coordinate of this ship on the board to place it? (LETTER,NUMBER)\n ";
 
 					std::getline(std::cin, userGuess);
 
-					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);	
+					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
 
-					while(validLocation == false)	
+					while(validLocation == false)
 					{
 
 						if(noHorizontalCollision(userGuess,i+1))	//collion check
 						{
-							guessConversion(userGuess); 
-							temp = userGuess;	
+							guessConversion(userGuess);
+							temp = userGuess;
 
 							for(int j = 0; j < m_ship[i].getLength(); j++ )
 							{
-								myBoard[m_rowIndex][m_columnIndex+j] = ship;	
+								myBoard[m_rowIndex][m_columnIndex+j] = ship;
 								m_ship[i].setCoordinate(temp, j);
-								temp[0] = temp.at(0) + 1;	
-																					
+								temp[0] = temp.at(0) + 1;
+
 							}
 							printMyBoard();
 
-							validLocation = true;	
-							HorV = true;	
+							validLocation = true;
+							HorV = true;
 						}
-						else	
+						else
 						{
-							printMyBoard();	
-							std::cout << "Wrong location! Try again!\n";
-							std::cout<<"type left most coordinate of this ship to place it on the board? ";
+							printMyBoard();
+							std::cout << "Invalid Location, Try again!\n";
+							std::cout<<"Type in the left most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
 
 							std::getline(std::cin, userGuess);
 
-							std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);	
+							std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
 
 						}
 					}
@@ -320,38 +320,38 @@ void Board::setupBoard()
 				{
 					validLocation = false; //reinitializes to false since if they do H twice in a row, it could have been set to true from before
 
-					std::cout<<"type top most coordinate of this ship to place it on the board? ";
+					std::cout<<"Type in the top most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
 
 					std::getline(std::cin, userGuess);
 
-					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);	
+					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
 
 
 					while(validLocation == false)
 					{
 						if(noVerticalCollision(userGuess,i+1))
 						{
-							guessConversion(userGuess); 
-							temp = userGuess;	
+							guessConversion(userGuess);
+							temp = userGuess;
 							for(int j = 0; j < m_ship[i].getLength(); j++ )
 							{
 								myBoard[m_rowIndex+j][m_columnIndex] = ship;
 								m_ship[i].setCoordinate(temp, j);
-								temp[1] = temp.at(1) + 1;	
-																					
-																					
+								temp[1] = temp.at(1) + 1;
+
+
 
 							}
-							printMyBoard();	
+							printMyBoard();
 
-							validLocation = true;	
-							HorV = true;	
+							validLocation = true;
+							HorV = true;
 						}
 						else
 						{
-							printMyBoard();	
-							std::cout << "Wrong location! Try again!\n";
-							std::cout<<"type top most coordinate of this ship to place it on the board? ";
+							printMyBoard();
+							std::cout << "Invalid Location, Try again!\n";
+							std::cout<<"Type in the top most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
 
 							std::getline(std::cin, userGuess);
 
@@ -360,14 +360,14 @@ void Board::setupBoard()
 						}
 					}
 				}
-				else	
+				else
 				{
 					std::cout << "Invalid Direction. Try again!\n";
-					printMyBoard();	
-					std::cout<<"Would you like this ship to be HORIZONTAL(H/h) OR VERTICAL(V/v). Ship size: " <<i+1 <<": ";
+					printMyBoard();
+					std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)";
 					std::getline(std::cin, userDirection);
 				}
-			}while(!HorV);	
+			}while(!HorV);
 
 
 		}
@@ -375,24 +375,24 @@ void Board::setupBoard()
 	}
 	std::cout << "Press Enter to go to the next Player's turn: ";
 
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); 
-	printIntermission();	
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+	printIntermission();
 
 
 
 }
 
-void Board::setNumberofShips(int shipnum)	
+void Board::setNumberofShips(int shipnum)
 {
 	numberOfShips = shipnum;
 }
 
-int Board::getNumberofShips() const	
+int Board::getNumberofShips() const
 {
 	return numberOfShips;
 }
 
-Ship* Board::getShip() const	
+Ship* Board::getShip() const
 {
 	return m_ship;
 }
