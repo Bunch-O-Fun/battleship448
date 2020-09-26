@@ -64,10 +64,9 @@ void Board::printMyScoreBoard()
 {
 	std::cout<<"\n";
 	std::cout<<"=========SCOREBOARD==========\n";
-	std::cout<<"Ship Status: ";
-	if (numberOfShips == 1 || 2)
-	{
-		if (m_ship->isSunk() == 1)
+	std::cout<<"Ship Status: \n";
+
+		if (m_ship->isSunk() == 1) // checks if size 1 ship is sunk or not
 			{
 				std::cout<<"Size 1: Sunk";
 			}
@@ -75,7 +74,15 @@ void Board::printMyScoreBoard()
 		{
 			std::cout<<"Size 1: Alive";
 		}
-	}
+
+		if (m_ship->isSunk() == 1)
+		{
+			std::cout<<"Size 2: Sunk";
+		}
+		else
+		{
+			std::cout<<"Size2: Alive";
+		}
 	std::cout<<"\n";
 }
 
