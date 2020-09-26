@@ -9,6 +9,7 @@ Desc: Includes Executive.h functions for battleship game.
 #include <iostream>
 #include <fstream>
 #include "Player.h"		//include player header file
+#include "Computer.h"
 
 
 class Executive
@@ -51,5 +52,7 @@ private:
 	Player* player_2;		//player object for player2
 	int m_player_1Turn; //true if player1 turn, false if player2 turn
 	bool m_gameOver;	//game over to stop the while loop once the game ends
+	Computer* computer;
+	int m_difficulty;
 };
 #endif

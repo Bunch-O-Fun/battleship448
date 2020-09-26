@@ -26,8 +26,8 @@ class Computer
         string* getHitCoords();
         int getHitCoords_length();
         void placeShips();
-        void guessCoords_Easy(Board* playerBoard);
-        void guessCoords_Medium(Board* playerBoard);
-        void guessCoords_Hard(Board* playerBoard);
+        string guessCoords_Easy();
+        string guessCoords_Medium();
+        string guessCoords_Hard();
 };
 #endif

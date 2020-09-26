@@ -1,4 +1,5 @@
 #include "Computer.h"
+#include "Player.h"
 #include <iostream>
 #include <string>
 #include <cstdlib> //used for rand() method to generate coords
@@ -111,7 +112,7 @@ void Computer::placeShips()
     }
 
 }
-void Computer::guessCoords_Easy(Board* playerBoard)
+string Computer::guessCoords_Easy()
 {
     bool doLoop = true;
     while(doLoop == true)
@@ -130,23 +131,18 @@ void Computer::guessCoords_Easy(Board* playerBoard)
         }
         if(alreadyGuessed == false)
         {
-            // shoot at the randomdly generated coordinates
-            if(/* shot is a hit */)
-            {
-                m_hitCoords[getHitCoords_length()+1] = coords;
-                m_hitCoords_length++;
-            }
             m_guessedCoords[getGuessedCoords_length()+1] = coords;
             m_guessedCoords_length++;
             doLoop = false;
+            return(coords);
         }
     }
 }
-void Computer::guessCoords_Medium(Board* playerBoard)
+string Computer::guessCoords_Medium()
 {
 
 }
-void Computer::guessCoords_Hard(Board* playerBoard)
+string Computer::guessCoords_Hard()
 {
 
 }
