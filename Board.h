@@ -10,6 +10,7 @@
 #include <iostream>
 #include <string>
 #include <limits>
+
 using namespace std;
 
 class Board
@@ -37,14 +38,14 @@ class Board
         public:
         	Board();
         	~Board();
-		/** 
+		/**
        		* @pre None
        		* @post constructor
        		* @param shipNum
        		* @throw None
        		*/
 		Board(int shipNum);
-		/** 
+		/**
        		* @pre None
        		* @post prints rival's board
        		* @param None
@@ -61,6 +62,14 @@ class Board
 		/**
                 * @pre None
                 * @post prints blank space to hide the board from the other player
+                * @param None
+                * @throw None
+                */
+
+    void printMyScoreBoard();
+		/**
+                * @pre None
+                * @post prints and updates the scoreboard
                 * @param None
                 * @throw None
                 */
@@ -130,4 +139,3 @@ class Board
 		Ship* getShip() const;
 };
 #endif
-

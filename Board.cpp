@@ -59,6 +59,25 @@ void Board::printMyBoard()	//prints the player's board
 	}
 }
 
+void Board::printMyScoreBoard()
+{
+	std::cout<<"\n";
+	std::cout<<"=========SCOREBOARD==========\n";
+	std::cout<<"Ship Status: ";
+	if (numberOfShips == 1)
+	{
+		if (m_ship->isSunk() == 1)
+			{
+				std::cout<<"Size 1: Sunk";
+			}
+		else
+		{
+			std::cout<<"Size 1: Alive";
+		}
+	}
+	std::cout<<"\n";
+}
+
 bool Board::updateMyBoard(std::string userGuess)	//updates the current player board
 {
 	guessConversion(userGuess);	//updates m_rowIndex and m_columnIndex based on userGuess
@@ -224,7 +243,7 @@ bool Board::noVerticalCollision(std::string userGuess, int shipLength)
 		return false;	//false if out of bounds
 	}
  }
- return true;	//if passes all checks, no collision
+ return true;	//if passes all checks, no cblank space to hide the board from the other playerollision
 }
 
 void Board::setupBoard()
@@ -245,6 +264,7 @@ void Board::setupBoard()
 
 				do {
 					printMyBoard();
+					//printMyScoreBoard();
 					std::cout<<"Where would you like to place this ship of size 1? Enter your coordinate: (LETTER,NUMBER)\n";
 					std::getline(std::cin, userGuess);
 
