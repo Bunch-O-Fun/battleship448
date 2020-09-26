@@ -1,0 +1,32 @@
+#ifndef COMPUTER_H
+#define COMPUTER_H
+
+#include "Board.h"
+#include <string>
+
+using namespace std;
+
+class Computer
+{
+    private:
+        int m_numShips;
+        Board* m_board = nullptr;
+        string* m_guessedCoords = nullptr; // stores the guessed coordinates in an array of strings
+        int m_guessedCoords_length = 0; // keeps track of the number of guessed coordinates that have been put in the array
+        string* m_hitCoords = nullptr; // stores the hit coordinates in an array of strings
+        int m_hitCoords_length = 0; // keeps track of the number of hit coordinates that have been put in the array
+    public:
+        Computer(int numShips);
+        ~Computer();
+        int getNumShips();
+        Board* getBoard();
+        string* getGuessedCoords();
+        int getGuessedCoords_length();
+        string* getHitCoords();
+        int getHitCoords_length();
+        void placeShips();
+        void guessCoords_Easy(Board* playerBoard);
+        void guessCoords_Medium(Board* playerBoard);
+        void guessCoords_Hard(Board* playerBoard);
+};
+#endif
