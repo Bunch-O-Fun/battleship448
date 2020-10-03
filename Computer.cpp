@@ -11,12 +11,15 @@ Computer::Computer(int numShips)
     m_board = new Board(numShips);
     m_numShips = numShips;
     m_guessedCoords = new string[81]; // maximum number of coordinates that can be guessed is 9x9=81
-    m_hitCoords = new string[15]; // maximum number of coordinates that can be hit is 15, when each player has 5 ships
+    //m_hitCoords = new string[15]; // maximum number of coordinates that can be hit is 15, when each player has 5 ships
 }
 Computer::~Computer()
 {
     delete m_board;
     delete m_guessedCoords;
+    for (int i = 0; i < 5; i++){
+        delete m_hitCoords[i];
+    }
     delete m_hitCoords;
 }
 string Computer::convertCoords(int x, int y)
@@ -84,7 +87,7 @@ int Computer::getGuessedCoords_length()
 {
     return(m_guessedCoords_length);
 }
-string* Computer::getHitCoords()
+string** Computer::getHitCoords()
 {
     return(m_hitCoords);
 }
@@ -132,6 +135,20 @@ string Computer::guessCoords_Medium()
 
 }
 string Computer::guessCoords_Hard()
-{
+{ 
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < i + 1; j++){
+            if(m_hitCoords[i][j] != ""){
+                string attack = m_hitCoords[i][j];
+                m_hitCoords[i][j] = "";
+                cout << attack << "\n";
+                return attack;
+            }
+        }
+    }
+    return("AAAAHHHHHHH"); //should never return
+}
 
+void Computer::sethitCoords(string** hit){
+    m_hitCoords = hit;
 }

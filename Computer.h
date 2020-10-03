@@ -13,8 +13,10 @@ class Computer
         Board* m_board = nullptr; // Computer's board
         string* m_guessedCoords = nullptr; // stores the guessed coordinates in an array of strings
         int m_guessedCoords_length = 0; // keeps track of the number of guessed coordinates that have been put in the array
-        string* m_hitCoords = nullptr; // stores the hit coordinates in an array of strings
+        string** m_hitCoords = nullptr; // stores the hit coordinates in an array of strings
         int m_hitCoords_length = 0; // keeps track of the number of hit coordinates that have been put in the array
+        int* m_numPlayerShips;
+        int m_expectedNumShips;
     public:
         Computer(int numShips);
         ~Computer();
@@ -23,10 +25,11 @@ class Computer
         Board* getBoard();
         string* getGuessedCoords();
         int getGuessedCoords_length();
-        string* getHitCoords();
+        string** getHitCoords();
         int getHitCoords_length();
         string guessCoords_Easy();
         string guessCoords_Medium();
         string guessCoords_Hard();
+        void sethitCoords(string** hit);
 };
 #endif

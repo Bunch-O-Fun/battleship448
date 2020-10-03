@@ -31,11 +31,12 @@ class Board
 		string blueTilde;
 		string redHit;
 		string whiteMiss;
-		string ship;
+		string ship[5] = {"\033[1;32mD\033[0m", "\033[1;32mG\033[0m", "\033[1;32mS\033[0m", "\033[1;32mB\033[0m", "\033[1;32mC\033[0m"};
 		int numberOfShips;
 		Ship* m_ship = nullptr;
 
         public:
+        string** getFleet();
         	Board();
         	~Board();
 		/**

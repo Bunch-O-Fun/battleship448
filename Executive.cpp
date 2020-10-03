@@ -48,6 +48,8 @@ Executive::Executive()
 			}
 			std::cout <<"\nPlayer 1 place your ships\n";
 			player_1 -> getBoard() -> setupBoard(true);
+			string** playerFleet = player_1 -> getBoard() -> getFleet();
+			computer -> sethitCoords(playerFleet);
 			player_2 -> getBoard() -> setupBoard(false);
 			validOpponent = true;
 			isPlayer = false;
@@ -129,6 +131,8 @@ void Executive::game(int num)
 			shoot(guess); //shoot the location
 			if(m_player_1Turn % 2 == 1 && !m_gameOver) //player 1's turn
 			{
+				if(isPlayer)
+				{
 				std::cout << "PLAYER 1 TURN\n";
 				player_1->getBoard()->printShotBoard();
 				player_1->getBoard()->printMyBoard();
@@ -136,6 +140,7 @@ void Executive::game(int num)
 				std::cout <<"Player 1 please hit enter and let other player shoot (Please don't cheat and look away): "; //print the board for checking hit or not
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //get rid of user's ramdon input to crash the game
 				player_1->getBoard()->printIntermission();
+				}
 			}
 			else if(m_player_1Turn % 2 == 0 && !m_gameOver)	//player 2's turn
 			{

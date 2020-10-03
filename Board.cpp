@@ -16,7 +16,7 @@ Board::Board(int shipnum)
 	blueTilde = "\033[1;36m~\033[0m";	//blue water color
 	redHit = "\033[1;31mX\033[0m";	//red ship hit color
 	whiteMiss = "\033[1;37mO\033[0m";		//white missed shot color
-	ship = "\033[1;32m∆\033[0m";	//green ship color
+		//green ship color
 
 	for (int i=0; i<9; i++)	//initializes myBoard and shotBoard to a grid of blue water
 	{
@@ -27,10 +27,87 @@ Board::Board(int shipnum)
 		}
 	}
 }
+
+string convertCoords(int x, int y)
+{
+    string xCoord = "";
+    string yCoord = to_string(y);
+    string convertedCoords = "";
+    if(x < 0 || x > 9)
+    {
+        // some sort of error message
+    }
+    else if(x == 1)
+    {
+        xCoord = 'A';
+    }
+    else if(x == 2)
+    {
+        xCoord = 'B';
+    }
+    else if(x == 3)
+    {
+        xCoord = 'C';
+    }
+    else if(x == 4)
+    {
+        xCoord = 'D';
+    }
+    else if(x == 5)
+    {
+        xCoord = 'E';
+    }
+    else if(x == 6)
+    {
+        xCoord = 'F';
+    }
+    else if(x == 7)
+    {
+        xCoord = 'G';
+    }
+    else if(x == 8)
+    {
+        xCoord = 'H';
+    }
+    else if(x == 9)
+    {
+        xCoord = 'I';
+    }
+    convertedCoords += xCoord;
+    convertedCoords = convertedCoords + yCoord;
+    return(convertedCoords);
+}
+
+string** Board::getFleet(){
+	string** fleetList = new string*[5];
+	for (int i=0; i < 5; i++){
+		fleetList[i] = new string[i + 1];
+		for(int j = 0; j < i + 1; j++){
+			fleetList[i][j] = "";
+		}
+	}
+	for(int i = 0; i < 5; i++){
+		int fill = 0;
+		
+		for(int y = 0; y < 9; y++){
+			for(int x = 0; x < 9; x++){
+				if (myBoard[x][y] == ship[i]){
+					fleetList[i][fill] = convertCoords(y + 1,x + 1);
+					fill++;
+				}
+			}
+		}
+	}
+	return fleetList;
+} 
+
+
+
 Board::~Board()	//destructor to delete m_ship
 {
 	delete[] m_ship;
 }
+
 void Board::printMyBoard()	//prints the player's board
 {
 	std::cout << "\t\t\tYour board\n";
@@ -117,8 +194,10 @@ bool Board::updateMyBoard(std::string userGuess)	//updates the current player bo
 	{
 		myBoard[m_rowIndex][m_columnIndex] = whiteMiss;
 	}
-	else if(location == ship)	//if location is a green triangle, then set to a red traingle
+	else if(location == redHit || location == whiteMiss)	//can't shoot at same location twice
 	{
+		throw(std::runtime_error("You already shot here! Try again!"));
+	} else	{//if location is a green triangle, then set to a red traingle
 		myBoard[m_rowIndex][m_columnIndex] = redHit;
 		for(int i = 0; i < numberOfShips; i++)	//searches through each ship, at the length of each ship, until it finds the correct index holding the userGuess location
 		{
@@ -137,10 +216,6 @@ bool Board::updateMyBoard(std::string userGuess)	//updates the current player bo
 		}
 		return true;	//true, ship hit
 	}
-	else if(location == redHit || location == whiteMiss)	//can't shoot at same location twice
-	{
-		throw(std::runtime_error("You already shot here! Try again!"));
-	}
 	return false;	//if there were no hits, then this runs and we return false because it was a miss
 }
 void Board::printShotBoard()	//prints rival board
@@ -151,7 +226,7 @@ void Board::printShotBoard()	//prints rival board
   {
     std::cout << m_rowNames[i] << "\t";	//prints the column names
   }
-std::cout << "\n";
+	std::cout << "\n";
 
   for(int i=0;i<9;i++)
   {
@@ -206,6 +281,7 @@ void Board::guessConversion(std::string userGuess)
 	int temp = userGuess.at(1) - '0'; //convert ASCII to decimal
 	m_rowIndex = temp - 1; //sets the column user wants, -1 for computer scientist index :)
 }
+
 bool Board::withinBoundary(std::string userGuess) //true for userGuess within bounds of the board
 {
 
@@ -313,6 +389,7 @@ string Board::convertCoords(int x, int y)
     convertedCoords = convertedCoords + yCoord;
     return(convertedCoords);
 }
+
 void Board::setupBoard(bool isPlayer)
 {
 	std::string userGuess;
@@ -344,7 +421,7 @@ void Board::setupBoard(bool isPlayer)
 						std::cout << "Invalid Location, Try again!\n";
 					}
 				} while(!withinBoundary(userGuess));
-					myBoard[m_rowIndex][m_columnIndex] = ship;
+					myBoard[m_rowIndex][m_columnIndex] = ship[0];
 					m_ship[i].setCoordinate(userGuess, 0);
 					if(isPlayer)
 					{
@@ -393,7 +470,7 @@ void Board::setupBoard(bool isPlayer)
 							temp = userGuess;
 							for(int j = 0; j < m_ship[i].getLength(); j++ )
 							{
-								myBoard[m_rowIndex][m_columnIndex+j] = ship;
+								myBoard[m_rowIndex][m_columnIndex+j] = ship[i];
 								m_ship[i].setCoordinate(temp, j);
 								temp[0] = temp.at(0) + 1;
 							}
@@ -442,7 +519,7 @@ void Board::setupBoard(bool isPlayer)
 							temp = userGuess;
 							for(int j = 0; j < m_ship[i].getLength(); j++ )
 							{
-								myBoard[m_rowIndex+j][m_columnIndex] = ship;
+								myBoard[m_rowIndex+j][m_columnIndex] = ship[i];
 								m_ship[i].setCoordinate(temp, j);
 								temp[1] = temp.at(1) + 1;
 							}
@@ -488,6 +565,8 @@ void Board::setupBoard(bool isPlayer)
 		printIntermission();
 	}
 }
+
+
 void Board::setNumberofShips(int shipnum)
 {
 	numberOfShips = shipnum;
