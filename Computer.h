@@ -25,7 +25,6 @@ class Computer
         int getGuessedCoords_length();
         string* getHitCoords();
         int getHitCoords_length();
-        void placeShips();
         string guessCoords_Easy();
         string guessCoords_Medium();
         string guessCoords_Hard();

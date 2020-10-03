@@ -6,6 +6,9 @@
 #include "Board.h"
 #include <sstream>
 #include <limits>
+#include <cstdlib>
+
+using namespace std;
 
 Board::Board(int shipnum)
 {
@@ -261,7 +264,56 @@ bool Board::noVerticalCollision(std::string userGuess, int shipLength)
  }
  return true;	//if passes all checks, no cblank space to hide the board from the other playerollision
 }
-void Board::setupBoard()
+string Board::convertCoords(int x, int y)
+{
+	string xCoord = "";
+    string yCoord = to_string(y);
+    string convertedCoords = "";
+    if(x < 0 || x > 9)
+    {
+        // some sort of error message
+    }
+    else if(x == 1)
+    {
+        xCoord = 'A';
+    }
+    else if(x == 2)
+    {
+        xCoord = 'B';
+    }
+    else if(x == 3)
+    {
+        xCoord = 'C';
+    }
+    else if(x == 4)
+    {
+        xCoord = 'D';
+    }
+    else if(x == 5)
+    {
+        xCoord = 'E';
+    }
+    else if(x == 6)
+    {
+        xCoord = 'F';
+    }
+    else if(x == 7)
+    {
+        xCoord = 'G';
+    }
+    else if(x == 8)
+    {
+        xCoord = 'H';
+    }
+    else if(x == 9)
+    {
+        xCoord = 'I';
+    }
+    convertedCoords += xCoord;
+    convertedCoords = convertedCoords + yCoord;
+    return(convertedCoords);
+}
+void Board::setupBoard(bool isPlayer)
 {
 	std::string userGuess;
 	std::string userDirection;
@@ -276,9 +328,13 @@ void Board::setupBoard()
 		{
 			userGuess = " ";
 				do {
-					printMyBoard();
-					std::cout<<"Where would you like to place this ship of size 1? Enter your coordinate: (LETTER,NUMBER)\n";
-					std::getline(std::cin, userGuess);
+					if (isPlayer){
+						printMyBoard();
+						std::cout<<"Where would you like to place this ship of size 1? Enter your coordinate: (LETTER,NUMBER)\n";
+						std::getline(std::cin, userGuess);
+					} else {
+						userGuess = convertCoords(rand()%9+1, rand()%9+1);
+					}
 					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
 					if(!withinBoundary(userGuess))
 					{
@@ -287,20 +343,44 @@ void Board::setupBoard()
 				} while(!withinBoundary(userGuess));
 					myBoard[m_rowIndex][m_columnIndex] = ship;
 					m_ship[i].setCoordinate(userGuess, 0);
-					printMyBoard();
+					if(isPlayer)
+					{
+						printMyBoard();
+					}
 		}
 		else
 		{
-			std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)\n";
-			std::getline(std::cin, userDirection);
+			if(isPlayer)
+			{
+				std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)";
+				std::getline(std::cin, userDirection);
+			}
+			else
+			{
+				if(rand()%2)
+				{
+					userDirection = "H";
+				}
+				else
+				{
+					userDirection = "V";
+				}
+			}
 			do
 			{
 				HorV = false;
 				if(userDirection == "H" || userDirection == "h")
 				{
 					validLocation = false;
-					std::cout<<"Type in the left most coordinate of this ship on the board to place it? (LETTER,NUMBER)\n ";
-					std::getline(std::cin, userGuess);
+					if(isPlayer)
+					{
+						std::cout<<"Type in the left most coordinate of this ship on the board to place it? (LETTER,NUMBER)\n ";
+						std::getline(std::cin, userGuess);
+					}
+					else
+					{
+						userGuess = convertCoords(rand()%9+1, rand()%9+1);
+					}
 					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
 					while(validLocation == false)
 					{
@@ -314,16 +394,26 @@ void Board::setupBoard()
 								m_ship[i].setCoordinate(temp, j);
 								temp[0] = temp.at(0) + 1;
 							}
-							printMyBoard();
+							if(isPlayer)
+							{
+								printMyBoard();
+							}
 							validLocation = true;
 							HorV = true;
 						}
 						else
 						{
-							printMyBoard();
-							std::cout << "Invalid Location, Try again!\n";
-							std::cout<<"Type in the left most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
-							std::getline(std::cin, userGuess);
+							if(isPlayer)
+							{
+								printMyBoard();
+								std::cout << "Invalid Location, Try again!\n";
+								std::cout<<"Type in the left most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
+								std::getline(std::cin, userGuess);
+							}
+							else
+							{
+								userGuess = convertCoords(rand()%9+1, rand()%9+1);
+							}
 							std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
 						}
 					}
@@ -331,8 +421,15 @@ void Board::setupBoard()
 				else if(userDirection == "V" || userDirection == "v")
 				{
 					validLocation = false; //reinitializes to false since if they do H twice in a row, it could have been set to true from before
-					std::cout<<"Type in the top most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
-					std::getline(std::cin, userGuess);
+					if(isPlayer)
+					{
+						std::cout<<"Type in the top most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
+						std::getline(std::cin, userGuess);
+					}
+					else
+					{
+						userGuess = convertCoords(rand()%9+1, rand()%9+1);
+					}
 					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
 					while(validLocation == false)
 					{
@@ -346,16 +443,27 @@ void Board::setupBoard()
 								m_ship[i].setCoordinate(temp, j);
 								temp[1] = temp.at(1) + 1;
 							}
-							printMyBoard();
+							if(isPlayer)
+							{
+								printMyBoard();
+							}
 							validLocation = true;
 							HorV = true;
 						}
 						else
 						{
-							printMyBoard();
-							std::cout << "Invalid Location, Try again!\n";
-							std::cout<<"Type in the top most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
-							std::getline(std::cin, userGuess);
+							if(isPlayer)
+							{
+								printMyBoard();
+								std::cout << "Invalid Location, Try again!\n";
+								std::cout<<"Type in the top most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
+								std::getline(std::cin, userGuess);
+							}
+							else
+							{
+								userGuess = convertCoords(rand()%9+1, rand()%9+1);
+							}
+
 							std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);	//converts guess to uppercase
 						}
 					}
