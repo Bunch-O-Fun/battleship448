@@ -5,7 +5,6 @@ Desc: Includes implementation for Executive.h file/functions
 #include "Executive.h"
 #include <limits>
 #include "algorithm" //for toupper
-#include <Windows.h>
 
 using namespace std;
 
@@ -66,7 +65,7 @@ Executive::Executive()
 			cout << "Invalid input. Input must be 'P' or 'A'. Try again (P/A): ";
 		}
 	}
-	game();
+	game(numOfBoats);
 }
 
 Executive::~Executive()
@@ -75,7 +74,7 @@ Executive::~Executive()
 	delete player_2;		//delete player2
 }
 
-void Executive::game()
+void Executive::game(int num)
 {
 	std::string guess = " ";
 	while(!m_gameOver)
@@ -89,7 +88,7 @@ void Executive::game()
 				{
 					player_1->getBoard()->printShotBoard();
 					player_1->getBoard()->printMyBoard();
-					player_1->getBoard()->prinyMyScoreBoard();
+					player_1->getBoard()->printMyScoreBoard(num);
 					std::cout << "Player 1: Where would you like to SHOOT: ";
 					std::getline(std::cin, guess);
 					std::transform(guess.begin(), guess.end(),guess.begin(), ::toupper);
@@ -105,6 +104,7 @@ void Executive::game()
 					{
 						player_2->getBoard()->printShotBoard();
 						player_2->getBoard()->printMyBoard();
+						player_2->getBoard()->printMyScoreBoard(num);
 						std::cout <<"Player 2: Where would you like to SHOOT: ";
 						std::getline(std::cin, guess);
 					}
@@ -130,6 +130,7 @@ void Executive::game()
 				std::cout << "PLAYER 1 TURN\n";
 				player_1->getBoard()->printShotBoard();
 				player_1->getBoard()->printMyBoard();
+				player_1->getBoard()->printMyScoreBoard(num);
 				std::cout <<"Player 1 please hit enter and let other player shoot (Please don't cheat and look away): "; //print the board for checking hit or not
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //get rid of user's ramdon input to crash the game
 				player_1->getBoard()->printIntermission();
@@ -141,6 +142,7 @@ void Executive::game()
 					std::cout << "PLAYER 2 TURN\n";
 					player_2->getBoard()->printShotBoard();
 					player_2->getBoard()->printMyBoard();
+					player_2->getBoard()->printMyScoreBoard(num);
 					std::cout <<"Player 2 please hit enter and let other player shoot (Please don't cheat and look away): "; //print the board
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n'); //ignore random input for Eg: "Smack-Talking"
 					player_2->getBoard()->printIntermission();
@@ -157,6 +159,7 @@ void Executive::game()
 	{
 		player_2->getBoard()->printShotBoard();
 		player_2->getBoard()->printMyBoard();
+		player_2->getBoard()->printMyScoreBoard(num);
 		if(isPlayer)
 		{
 			std::cout << "WINNER PLAYER 2!\n";
@@ -170,6 +173,7 @@ void Executive::game()
 	{
 		player_1->getBoard()->printShotBoard();
 		player_1->getBoard()->printMyBoard();
+		player_1->getBoard()->printMyScoreBoard(num);
 		std::cout << "WINNER PLAYER 1!\n";
 	}
 }

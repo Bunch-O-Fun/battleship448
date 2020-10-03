@@ -94,12 +94,13 @@ int Computer::getHitCoords_length()
 }
 string Computer::guessCoords_Easy()
 {
+    string coords;
     bool doLoop = true;
     while(doLoop == true)
     {
         int x = rand() % 9 + 1;
         int y = rand() % 9 + 1;
-        string coords = convertCoords(x,y);
+        coords = convertCoords(x,y);
         bool alreadyGuessed = false;
         for(int i=0; i < m_guessedCoords_length; i++)
         {
@@ -114,9 +115,9 @@ string Computer::guessCoords_Easy()
             m_guessedCoords[getGuessedCoords_length()+1] = coords;
             m_guessedCoords_length++;
             doLoop = false;
-            return(coords);
         }
     }
+    return(coords);
 }
 string Computer::guessCoords_Medium()
 {

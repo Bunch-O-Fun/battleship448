@@ -34,11 +34,11 @@ public:
 	  */
 	void shoot(std::string location);
 	/**
-	  * @pre: 
+	  * @pre:
 	  * @post:
 	  * @param:
 	  */
-	void game();
+	void game(int num);
 	/**
 	  * @pre: Function including all the game functionality.
 	  * @post:

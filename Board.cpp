@@ -328,11 +328,14 @@ void Board::setupBoard(bool isPlayer)
 		{
 			userGuess = " ";
 				do {
-					if (isPlayer){
+					if (isPlayer)
+					{
 						printMyBoard();
 						std::cout<<"Where would you like to place this ship of size 1? Enter your coordinate: (LETTER,NUMBER)\n";
-						std::getline(std::cin, userGuess);
-					} else {
+						std::cin>>userGuess;
+					}
+					else
+					{
 						userGuess = convertCoords(rand()%9+1, rand()%9+1);
 					}
 					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
@@ -352,8 +355,8 @@ void Board::setupBoard(bool isPlayer)
 		{
 			if(isPlayer)
 			{
-				std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)";
-				std::getline(std::cin, userDirection);
+				std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)\n";
+				std::cin>>userDirection;
 			}
 			else
 			{
@@ -374,8 +377,8 @@ void Board::setupBoard(bool isPlayer)
 					validLocation = false;
 					if(isPlayer)
 					{
-						std::cout<<"Type in the left most coordinate of this ship on the board to place it? (LETTER,NUMBER)\n ";
-						std::getline(std::cin, userGuess);
+						std::cout<<"Type in the left most coordinate of this ship on the board to place it? (LETTER,NUMBER)\n";
+						std::cin>>userGuess;
 					}
 					else
 					{
@@ -408,7 +411,7 @@ void Board::setupBoard(bool isPlayer)
 								printMyBoard();
 								std::cout << "Invalid Location, Try again!\n";
 								std::cout<<"Type in the left most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
-								std::getline(std::cin, userGuess);
+								std::cin>>userGuess;
 							}
 							else
 							{
@@ -424,7 +427,7 @@ void Board::setupBoard(bool isPlayer)
 					if(isPlayer)
 					{
 						std::cout<<"Type in the top most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
-						std::getline(std::cin, userGuess);
+						std::cin>>userGuess;
 					}
 					else
 					{
@@ -457,7 +460,7 @@ void Board::setupBoard(bool isPlayer)
 								printMyBoard();
 								std::cout << "Invalid Location, Try again!\n";
 								std::cout<<"Type in the top most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
-								std::getline(std::cin, userGuess);
+								std::cin>>userGuess;
 							}
 							else
 							{
@@ -473,10 +476,9 @@ void Board::setupBoard(bool isPlayer)
 					std::cout << "Invalid Direction. Try again!\n";
 					printMyBoard();
 					std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)\n";
-					std::getline(std::cin, userDirection);
+					std::cin>>userDirection;
 				}
 			}while(!HorV);
-			printMyScoreBoard(numberOfShips);
 		}
 	}
 	std::cout << "Press Enter to go to the next Player's turn: ";

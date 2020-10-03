@@ -1,5 +1,5 @@
-bship: main.o Executive.o Board.o Player.o Ship.o
-	g++ -g -Wall -std=c++11 main.o Executive.o Board.o Player.o Ship.o -o bship
+bship: main.o Executive.o Board.o Player.o Ship.o Computer.o
+	g++ -g -Wall -std=c++11 main.o Executive.o Board.o Player.o Ship.o Computer.o -o bship
 
 main.o: main.cpp
 	g++ -g -Wall -std=c++11 -c main.cpp
@@ -15,7 +15,9 @@ Board.o: Board.cpp Board.h
 
 Ship.o: Ship.cpp Ship.h
 	g++ -g -Wall -std=c++11 -c Ship.cpp
-	
+
+Computer.o: Computer.cpp Computer.h
+	g++ -g -Wall -std=c++11 -c Computer.cpp
+
 clean:
 	rm *.o bship
-
