@@ -64,22 +64,46 @@ void Board::printMyScoreBoard()
 	std::cout<<"=========SCOREBOARD==========\n";
 	std::cout<<"Ship Status: \n";
 
-		if (m_ship->isSunk() == 1) // checks if size 1 ship is sunk or not
+		if (m_ship[0].isSunk() == 1) // checks if size 1 ship is sunk or not
 			{
-				std::cout<<"Size 1: Sunk";
+				std::cout<<"Size 1: Sunk\n";
 			}
 		else
 		{
-			std::cout<<"Size 1: Alive";
+			std::cout<<"Size 1: Alive\n";
 		}
 
-		if (m_ship->isSunk() == 1)
+		if (m_ship[1].isSunk() == 1) // checks if size 2 ship is sunk or not
 		{
-			std::cout<<"Size 2: Sunk";
+			std::cout<<"Size 2: Sunk\n";
 		}
 		else
 		{
-			std::cout<<"Size2: Alive";
+			std::cout<<"Size 2: Alive\n";
+		}
+		if (m_ship[2].isSunk() == 1) // checks if size 3 ship is sunk or not
+		{
+			std::cout<<"Size 3: Sunk\n";
+		}
+		else
+		{
+			std::cout<<"Size 3: Alive\n";
+		}
+		if (m_ship[3].isSunk() == 1) // checks if size 4 ship is sunk or not
+		{
+			std::cout<<"Size 4: Sunk\n";
+		}
+		else
+		{
+			std::cout<<"Size 4: Alive\n";
+		}
+		if (m_ship[4].isSunk() == 1) // checks if size 5 ship is sunk or not
+		{
+			std::cout<<"Size 5: Sunk\n";
+		}
+		else
+		{
+			std::cout<<"Size 5: Alive\n";
 		}
 	std::cout<<"\n";
 }
@@ -256,7 +280,7 @@ void Board::setupBoard()
 					printMyBoard();
 					//printMyScoreBoard();
 					std::cout<<"Where would you like to place this ship of size 1? Enter your coordinate: (LETTER,NUMBER)\n";
-					//std::getline(std::cin, userGuess);
+					std::getline(std::cin, userGuess);
 					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
 					if(!withinBoundary(userGuess))
 					{
@@ -269,8 +293,8 @@ void Board::setupBoard()
 		}
 		else
 		{
-			std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)";
-			//std::getline(std::cin, userDirection);
+			std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)\n";
+			std::getline(std::cin, userDirection);
 			do
 			{
 				HorV = false;
@@ -278,7 +302,7 @@ void Board::setupBoard()
 				{
 					validLocation = false;
 					std::cout<<"Type in the left most coordinate of this ship on the board to place it? (LETTER,NUMBER)\n ";
-					//std::getline(std::cin, userGuess);
+					std::getline(std::cin, userGuess);
 					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
 					while(validLocation == false)
 					{
@@ -342,7 +366,7 @@ void Board::setupBoard()
 				{
 					std::cout << "Invalid Direction. Try again!\n";
 					printMyBoard();
-					std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)";
+					std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)\n";
 					std::getline(std::cin, userDirection);
 				}
 			}while(!HorV);

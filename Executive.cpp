@@ -6,37 +6,37 @@ Desc: Includes implementation for Executive.h file/functions
 #include <limits>
 #include "algorithm" //for toupper
 
-Executive::Executive()		
+Executive::Executive()
 {
-	int numOfBoats = 0;		
+	int numOfBoats = 0;
 
-	try		
+	try
 	{
-		numOfBoats = boatCheck();		
+		numOfBoats = boatCheck();
 	}
 
 	catch(std::runtime_error &rte)	//catch error if function fails
 	{
-		std::cout << "Invalid number of ships";		
+		std::cout << "Invalid number of ships";
 	}
 
-	player_1 = new Player(numOfBoats); 		
-	player_2 = new Player(numOfBoats);		
-	m_gameOver = false;			
-	m_player_1Turn = 1;			
+	player_1 = new Player(numOfBoats);
+	player_2 = new Player(numOfBoats);
+	m_gameOver = false;
+	m_player_1Turn = 1;
 
-	std::cout <<"\nPlayer 1 place your ships\n";		
-	player_1 -> getBoard() -> setupBoard();					
-	std::cout <<"\nPlayer 2 place your ships\n";		
-	player_2 -> getBoard() -> setupBoard();					
-	game();		
+	std::cout <<"\nPlayer 1 place your ships\n";
+	player_1 -> getBoard() -> setupBoard();
+	std::cout <<"\nPlayer 2 place your ships\n";
+	player_2 -> getBoard() -> setupBoard();
+	game();
 
 }
 
-Executive::~Executive()		
+Executive::~Executive()
 {
 	delete player_1;		//delete player1
-	delete player_2;		//delete player2 
+	delete player_2;		//delete player2
 }
 
 void Executive::game()
@@ -47,7 +47,7 @@ void Executive::game()
 	{
 		try
 		{
-			guess = " ";			
+			guess = " ";
 
 			while(guess.length() != 2)
 			{
@@ -55,12 +55,12 @@ void Executive::game()
 				{
 					player_1->getBoard()->printShotBoard();
 					player_1->getBoard()->printMyBoard();
-					std::cout << "Player 1: Where would you like to SHOOT: "; 
+					std::cout << "Player 1: Where would you like to SHOOT: ";
 					std::getline(std::cin, guess);
 
-					std::transform(guess.begin(), guess.end(),guess.begin(), ::toupper);	
+					std::transform(guess.begin(), guess.end(),guess.begin(), ::toupper);
 
-					std::cout << "guess: " << guess << "\n"; 
+					std::cout << "guess: " << guess << "\n";
 
 					if(guess.length() != 2)
 					{
@@ -72,19 +72,19 @@ void Executive::game()
 				{
 					player_2->getBoard()->printShotBoard();
 					player_2->getBoard()->printMyBoard();
-					std::cout <<"Player 2: Where would you like to SHOOT: "; 
+					std::cout <<"Player 2: Where would you like to SHOOT: ";
 
 					//std::getline(std::cin, guess);
 					//guess = computer->guessCoords_Easy();
 					switch (m_difficulty)
 					{
-						case 0: guess = computer->guessCoords_Easy(); break;
-						case 1: guess = computer->guessCoords_Medium(); break;
-						case 2: guess = computer->guessCoords_Hard(); break;
-						default: std::getline(std::cin, guess); 
+					//	case 0: guess = computer->guessCoords_Easy(); break;
+						//case 1: guess = computer->guessCoords_Medium(); break;
+						//case 2: guess = computer->guessCoords_Hard(); break;
+						default: std::getline(std::cin, guess);
 					}
 
-					std::transform(guess.begin(), guess.end(),guess.begin(), ::toupper);	
+					std::transform(guess.begin(), guess.end(),guess.begin(), ::toupper);
 
 
 					if(guess.length() != 2)
@@ -194,17 +194,17 @@ void Executive::shoot(std::string location)
 
 int Executive::boatCheck() //return number of boats
 {
-	int numOfBoats = 0;						
+	int numOfBoats = 0;
 	std::string tempBoats = " ";	//storing numOfBoats as a string
 
-	std::cout << "How many ships would you like to play with? (Choose 1-5): ";		
+	std::cout << "How many ships would you like to play with? (Choose 1-5): ";
 
-	std::getline(std::cin, tempBoats);		
+	std::getline(std::cin, tempBoats);
 
 	if(tempBoats.length() < 1 || tempBoats.length() > 1)		//check length of string NOT equal to one
 	{
 		std::cout << "Must be a one-digit number from 1-5!\n";	//error handling when digit was greater than length 1
-		return boatCheck();		//return boatCheck function to get a new input 
+		return boatCheck();		//return boatCheck function to get a new input
 	}
 
 	else		//if tempBoats equal to 1

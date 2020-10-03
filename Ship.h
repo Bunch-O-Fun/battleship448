@@ -4,7 +4,7 @@
  * Project 1 EECS 448
  * Brief: Export the template class Ship
  * Date: Sep 13, 2020
- * 
+ *
 */
 #ifndef SHIP_H
 #define SHIP_H
