@@ -92,26 +92,6 @@ int Computer::getHitCoords_length()
 {
     return(m_hitCoords_length);
 }
-void Computer::placeShips()
-{
-    int xCoord = rand() % 9 + 1;
-    int yCoord = rand() % 9 + 1;
-    int numShips = this->getNumShips();
-    while(numShips >= 0)
-    {
-        // try to place ships at given x,y coordinates
-        if(/*shipPlacementSuccessful*/)
-        {
-            numShips--;
-        }
-        else
-        {
-            // do nothing, continue loop
-        }
-        
-    }
-
-}
 string Computer::guessCoords_Easy()
 {
     bool doLoop = true;
