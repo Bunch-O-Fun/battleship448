@@ -49,10 +49,12 @@ public:
 private:
 
 	Player* player_1;		//player object for player1
-	Player* player_2;		//player object for player2
+	Player* player_2;	//player object for player2
+	char m_opponent;
 	int m_player_1Turn; //true if player1 turn, false if player2 turn
 	bool m_gameOver;	//game over to stop the while loop once the game ends
 	Computer* computer;
 	int m_difficulty;
+	bool isPlayer;
 };
 #endif
