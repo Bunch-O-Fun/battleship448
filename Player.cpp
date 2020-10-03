@@ -53,3 +53,7 @@ void Player::shooting(std::string userGuess, bool hit)
 {
 	m_board->updateShotBoard(userGuess, hit); //update the shot board after player shooting
 }
+
+int Player::shipsAlive(){
+	return(m_board->shipsAlive());
+}

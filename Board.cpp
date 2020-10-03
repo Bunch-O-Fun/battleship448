@@ -336,6 +336,17 @@ Ship* Board::getShip() const
 {
 	return m_ship;
 }
+
+int Board::shipsAlive(){
+	int n = 0;
+	for(int i = 0; i < numberOfShips; i++){
+		if(!m_ships[i].isSunk()){
+			n++;
+		}
+	}
+	return(n);
+}
+
 void Board::printIntermission()
 {
 	for(int i=0;i<40;i++)

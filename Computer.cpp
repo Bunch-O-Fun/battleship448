@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Computer::Computer(int numShips)
+Computer::Computer(int numShips, string* hitcoords)
 {
     m_board = new Board(numShips);
     m_numShips = numShips;
@@ -140,9 +140,158 @@ string Computer::guessCoords_Easy()
 }
 string Computer::guessCoords_Medium()
 {
+    if(!notSunk)
+    {
+       bool doLoop = true;
+       attackCoord = "";
+        originX = -1;
+        originY = -1;
+        attackX = -1;
+        attackY = -1;
+       while(doLoop == true)
+        {
+            int x = rand() % 9 + 1;
+            int y = rand() % 9 + 1;
+            string coords = convertCoords(x,y);
+            bool alreadyGuessed = false;
+            for(int i=0; i < m_guessedCoords_length; i++)
+            {
+                if(coords == m_guessedCoords[i])
+                {
+                    alreadyGuessed = true;
+                    break;
+                }
+            }
+            if(alreadyGuessed == false)
+            {
+                m_guessedCoords[getGuessedCoords_length()+1] = coords;
+                m_guessedCoords_length++;
+                doLoop = false;
+                originX = x;
+                originY = y;
+                attackX = x;
+                attackY = y;
+                attackCoord = coords;
+                //return(coords);
+            }
+        }
+
+    for(int i=0; i<15; i++)
+    {
+        if(attackCoord == m_hitCoords[i])
+        {
+            notSunk=true;
+            break;
+        }
+    }
+    return(attackCoord);
+ 
+    }
+    else
+    {
+        if(direction == 'U')
+        {
+            if(attackY) > 1){
+                attackY--;
+            } else {
+                direction = 'D';
+                attackX = originX;
+                attackY = originY - 1;
+                string attack = convertCoords(attackX, attackY);
+                for(int i=0; i<15; i++)
+                {
+                    if(attack == m_hitCoords[i])
+                    {
+                        return(attack);
+                        break;
+                    }
+                }
+                direction = 'R';
+                attackX = originX;
+                attackY = originY;
+                return(attack);
+            }
+            for(int i=0; i<15; i++)
+            {
+                if(convertCoords(attackX, attackY) == m_hitCoords[i])
+                {
+                    return(convertCoords(attackX, attackY));
+                    break;
+                }
+            }
+            direction == 'D';
+            string attack = convertCoords(attackX, attackY);
+            attackX = originX;
+            attackY = originY;
+            return attack;
+        } else if (Direction == "D"){
+            if(attackY) < 9){
+                attackY--;
+            } else {
+                direction = 'R';
+                attackX = originX + 1;
+                attackY = originY;
+                string attack = convertCoords(attackX, attackY);
+                for(int i=0; i<15; i++)
+                {
+                    if(attack == m_hitCoords[i])
+                    {
+                        m_checkHitShip[i]="hit";
+                        return(attack);
+                        break;
+                    }
+                }
+                direction = 'R';
+                attackX = originX;
+                attackY = originY;
+                return(attack);
+            }
+            for(int i=0; i<15; i++)
+            {
+                if(convertCoords(attackX, attackY) == m_hitCoords[i])
+                {
+                    return(convertCoords(attackX, attackY));
+                    break;
+                }
+            }
+            direction == 'D';
+            string attack = convertCoords(attackX, attackY);
+            attackX = originX;
+            attackY = originY;
+            return attack;
+        }
+    }
+    
+
 
 }
 string Computer::guessCoords_Hard()
 {
+
+}
+
+int shipsAlive(){
+    int ships = m_numShips;
+    for(int i = 0; i < 81; i++){
+        if(m_hitCoors[0] == m_guessedCoords[i]){
+            ships--;
+        }
+        
+
+    }
+    bool firstDead;
+    for(int i = 0; i < 81; i++){
+        bool entireShipDead = true;
+        if(m_hitCoors[1] == m_guessedCoords[i]){
+            ships--;
+        }
+    }
+    for(int i = 0; i < 81; i++){
+        bool entireShipDead = true;
+        if(m_hitCoors[1] == m_guessedCoords[i]){
+            ships--;
+        }
+    }
+    
 
 }
