@@ -1,4 +1,5 @@
 #include "Computer.h"
+#include "Player.h"
 #include <iostream>
 #include <string>
 #include <cstdlib> //used for rand() method to generate coords
@@ -17,6 +18,55 @@ Computer::~Computer()
     delete m_board;
     delete m_guessedCoords;
     delete m_hitCoords;
+}
+string Computer::convertCoords(int x, int y)
+{
+    string xCoord = "";
+    string yCoord = to_string(y);
+    string convertedCoords = "";
+    if(x < 0 || x > 9)
+    {
+        // some sort of error message
+    }
+    else if(x == 1)
+    {
+        xCoord = 'A';
+    }
+    else if(x == 2)
+    {
+        xCoord = 'B';
+    }
+    else if(x == 3)
+    {
+        xCoord = 'C';
+    }
+    else if(x == 4)
+    {
+        xCoord = 'D';
+    }
+    else if(x == 5)
+    {
+        xCoord = 'E';
+    }
+    else if(x == 6)
+    {
+        xCoord = 'F';
+    }
+    else if(x == 7)
+    {
+        xCoord = 'G';
+    }
+    else if(x == 8)
+    {
+        xCoord = 'H';
+    }
+    else if(x == 9)
+    {
+        xCoord = 'I';
+    }
+    convertedCoords += xCoord;
+    convertedCoords = convertedCoords + yCoord;
+    return(convertedCoords);
 }
 int Computer::getNumShips()
 {
@@ -62,20 +112,18 @@ void Computer::placeShips()
     }
 
 }
-void Computer::guessCoords_Easy(Board* playerBoard)
+string Computer::guessCoords_Easy()
 {
     bool doLoop = true;
     while(doLoop == true)
     {
         int x = rand() % 9 + 1;
-        string xCoord = to_string(x);
         int y = rand() % 9 + 1;
-        string yCoord = to_string(y);
-        string Coords = xCoord + yCoord;
+        string coords = convertCoords(x,y);
         bool alreadyGuessed = false;
-        for(int i=0; i < getGuessedCoords_length(); i++)
+        for(int i=0; i < m_guessedCoords_length; i++)
         {
-            if(Coords == m_guessedCoords[i])
+            if(coords == m_guessedCoords[i])
             {
                 alreadyGuessed = true;
                 break;
@@ -83,16 +131,18 @@ void Computer::guessCoords_Easy(Board* playerBoard)
         }
         if(alreadyGuessed == false)
         {
-            // shoot at the randomdly generated coordinates
+            m_guessedCoords[getGuessedCoords_length()+1] = coords;
+            m_guessedCoords_length++;
             doLoop = false;
+            return(coords);
         }
     }
 }
-void Computer::guessCoords_Medium(Board* playerBoard)
+string Computer::guessCoords_Medium()
 {
 
 }
-void Computer::guessCoords_Hard(Board* playerBoard)
+string Computer::guessCoords_Hard()
 {
-    
+
 }

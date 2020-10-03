@@ -24,12 +24,10 @@ Board::Board(int shipnum)
 		}
 	}
 }
-
 Board::~Board()	//destructor to delete m_ship
 {
 	delete[] m_ship;
 }
-
 void Board::printMyBoard()	//prints the player's board
 {
 	std::cout << "\t\t\tYour board\n";
@@ -85,7 +83,6 @@ void Board::printMyScoreBoard()
 		}
 	std::cout<<"\n";
 }
-
 bool Board::updateMyBoard(std::string userGuess)	//updates the current player board
 {
 	guessConversion(userGuess);	//updates m_rowIndex and m_columnIndex based on userGuess
@@ -120,7 +117,6 @@ bool Board::updateMyBoard(std::string userGuess)	//updates the current player bo
 	}
 	return false;	//if there were no hits, then this runs and we return false because it was a miss
 }
-
 void Board::printShotBoard()	//prints rival board
 {
 	std::cout << "\n\t\t\tYour Rival's board\n";
@@ -148,7 +144,6 @@ std::cout << "\n";
 		}
   }
 }
-
 void Board::updateShotBoard(std::string userGuess, bool wasHit)
 {
 	guessConversion(userGuess);
@@ -161,9 +156,6 @@ void Board::updateShotBoard(std::string userGuess, bool wasHit)
 		shotBoard[m_rowIndex][m_columnIndex] = whiteMiss;
 	}
 }
-
-
-
 void Board::guessConversion(std::string userGuess)
 {
 	if(userGuess.length() != 2)	//if it isn't a coordinate like "A2, B7" etc. we return so user can try agane
@@ -183,16 +175,11 @@ void Board::guessConversion(std::string userGuess)
 		{
 			m_columnIndex = 10;
 		}
-
 	}
 }
-
 	int temp = userGuess.at(1) - '0'; //convert ASCII to decimal
-
 	m_rowIndex = temp - 1; //sets the column user wants, -1 for computer scientist index :)
-
 }
-
 bool Board::withinBoundary(std::string userGuess) //true for userGuess within bounds of the board
 {
 
@@ -213,7 +200,6 @@ bool Board::withinBoundary(std::string userGuess) //true for userGuess within bo
 			}
 		}
 }
-
 bool Board::noHorizontalCollision(std::string userGuess, int shipLength)
 {
 	guessConversion(userGuess);
@@ -233,7 +219,6 @@ bool Board::noHorizontalCollision(std::string userGuess, int shipLength)
  }
  return true;	//passed all checks, no collosion
 }
-
 bool Board::noVerticalCollision(std::string userGuess, int shipLength)
 {
 	guessConversion(userGuess);
@@ -253,7 +238,6 @@ bool Board::noVerticalCollision(std::string userGuess, int shipLength)
  }
  return true;	//if passes all checks, no cblank space to hide the board from the other playerollision
 }
-
 void Board::setupBoard()
 {
 	std::string userGuess;
@@ -261,7 +245,6 @@ void Board::setupBoard()
 	bool validLocation = false;
 	std::string temp;
 	bool HorV = false;
-
 	m_ship =  new Ship[numberOfShips];
 	for(int i = 0; i < numberOfShips; i++)
 	{
@@ -269,64 +252,47 @@ void Board::setupBoard()
 		if(m_ship[i].getLength() == 1)
 		{
 			userGuess = " ";
-
 				do {
 					printMyBoard();
 					//printMyScoreBoard();
 					std::cout<<"Where would you like to place this ship of size 1? Enter your coordinate: (LETTER,NUMBER)\n";
-					std::getline(std::cin, userGuess);
-
+					//std::getline(std::cin, userGuess);
 					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
-
 					if(!withinBoundary(userGuess))
 					{
-							std::cout << "Invalid Location, Try again!\n";
+						std::cout << "Invalid Location, Try again!\n";
 					}
-
 				} while(!withinBoundary(userGuess));
-
 					myBoard[m_rowIndex][m_columnIndex] = ship;
 					m_ship[i].setCoordinate(userGuess, 0);
 					printMyBoard();
-
-
 		}
 		else
 		{
 			std::cout<<"Your next ship is size " <<i+1<< ", which way do you want this ship to face? HORIZONTAL(H/h) OR VERTICAL(V/v)";
-			std::getline(std::cin, userDirection);
-
+			//std::getline(std::cin, userDirection);
 			do
 			{
 				HorV = false;
-
 				if(userDirection == "H" || userDirection == "h")
 				{
 					validLocation = false;
-
 					std::cout<<"Type in the left most coordinate of this ship on the board to place it? (LETTER,NUMBER)\n ";
-
-					std::getline(std::cin, userGuess);
-
+					//std::getline(std::cin, userGuess);
 					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
-
 					while(validLocation == false)
 					{
-
 						if(noHorizontalCollision(userGuess,i+1))	//collion check
 						{
 							guessConversion(userGuess);
 							temp = userGuess;
-
 							for(int j = 0; j < m_ship[i].getLength(); j++ )
 							{
 								myBoard[m_rowIndex][m_columnIndex+j] = ship;
 								m_ship[i].setCoordinate(temp, j);
 								temp[0] = temp.at(0) + 1;
-
 							}
 							printMyBoard();
-
 							validLocation = true;
 							HorV = true;
 						}
@@ -335,26 +301,17 @@ void Board::setupBoard()
 							printMyBoard();
 							std::cout << "Invalid Location, Try again!\n";
 							std::cout<<"Type in the left most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
-
 							std::getline(std::cin, userGuess);
-
 							std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
-
 						}
 					}
-
 				}
 				else if(userDirection == "V" || userDirection == "v")
 				{
 					validLocation = false; //reinitializes to false since if they do H twice in a row, it could have been set to true from before
-
 					std::cout<<"Type in the top most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
-
 					std::getline(std::cin, userGuess);
-
 					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
-
-
 					while(validLocation == false)
 					{
 						if(noVerticalCollision(userGuess,i+1))
@@ -366,12 +323,8 @@ void Board::setupBoard()
 								myBoard[m_rowIndex+j][m_columnIndex] = ship;
 								m_ship[i].setCoordinate(temp, j);
 								temp[1] = temp.at(1) + 1;
-
-
-
 							}
 							printMyBoard();
-
 							validLocation = true;
 							HorV = true;
 						}
@@ -380,11 +333,8 @@ void Board::setupBoard()
 							printMyBoard();
 							std::cout << "Invalid Location, Try again!\n";
 							std::cout<<"Type in the top most coordinate of this ship to place it on the board? (LETTER,NUMBER)\n";
-
 							std::getline(std::cin, userGuess);
-
 							std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);	//converts guess to uppercase
-
 						}
 					}
 				}
@@ -396,35 +346,24 @@ void Board::setupBoard()
 					std::getline(std::cin, userDirection);
 				}
 			}while(!HorV);
-
-
 		}
-
 	}
 	std::cout << "Press Enter to go to the next Player's turn: ";
-
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 	printIntermission();
-
-
-
 }
-
 void Board::setNumberofShips(int shipnum)
 {
 	numberOfShips = shipnum;
 }
-
 int Board::getNumberofShips() const
 {
 	return numberOfShips;
 }
-
 Ship* Board::getShip() const
 {
 	return m_ship;
 }
-
 void Board::printIntermission()
 {
 	for(int i=0;i<40;i++)

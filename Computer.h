@@ -9,8 +9,8 @@ using namespace std;
 class Computer
 {
     private:
-        int m_numShips;
-        Board* m_board = nullptr;
+        int m_numShips; // number of ships selected for the game
+        Board* m_board = nullptr; // Computer's board
         string* m_guessedCoords = nullptr; // stores the guessed coordinates in an array of strings
         int m_guessedCoords_length = 0; // keeps track of the number of guessed coordinates that have been put in the array
         string* m_hitCoords = nullptr; // stores the hit coordinates in an array of strings
@@ -18,6 +18,7 @@ class Computer
     public:
         Computer(int numShips);
         ~Computer();
+        string convertCoords(int x, int y);
         int getNumShips();
         Board* getBoard();
         string* getGuessedCoords();
@@ -25,8 +26,8 @@ class Computer
         string* getHitCoords();
         int getHitCoords_length();
         void placeShips();
-        void guessCoords_Easy(Board* playerBoard);
-        void guessCoords_Medium(Board* playerBoard);
-        void guessCoords_Hard(Board* playerBoard);
+        string guessCoords_Easy();
+        string guessCoords_Medium();
+        string guessCoords_Hard();
 };
 #endif

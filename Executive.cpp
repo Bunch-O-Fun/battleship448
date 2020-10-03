@@ -74,7 +74,15 @@ void Executive::game()
 					player_2->getBoard()->printMyBoard();
 					std::cout <<"Player 2: Where would you like to SHOOT: "; 
 
-					std::getline(std::cin, guess);
+					//std::getline(std::cin, guess);
+					//guess = computer->guessCoords_Easy();
+					switch (m_difficulty)
+					{
+						case 0: guess = computer->guessCoords_Easy(); break;
+						case 1: guess = computer->guessCoords_Medium(); break;
+						case 2: guess = computer->guessCoords_Hard(); break;
+						default: std::getline(std::cin, guess); 
+					}
 
 					std::transform(guess.begin(), guess.end(),guess.begin(), ::toupper);	
 
