@@ -85,7 +85,8 @@ class Board
                 * @param None
                 * @throw None
                 */
-		void setupBoard();
+                string convertCoords(int x, int y);
+		void setupBoard(bool isPlayer);
 		/**
                 * @pre None
                 * @post updates the shot board based on whether a location with a ship was hit or not
