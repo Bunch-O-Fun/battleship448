@@ -481,9 +481,12 @@ void Board::setupBoard(bool isPlayer)
 			}while(!HorV);
 		}
 	}
-	std::cout << "Press Enter to go to the next Player's turn: ";
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-	printIntermission();
+	if(isPlayer)
+	{
+		std::cout << "Press Enter to go to the next Player's turn: ";
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+		printIntermission();
+	}
 }
 void Board::setNumberofShips(int shipnum)
 {

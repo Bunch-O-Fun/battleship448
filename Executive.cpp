@@ -27,6 +27,7 @@ Executive::Executive()
 		cin >> m_opponent;
 		player_1 = new Player(numOfBoats);
 		player_2 = new Player(numOfBoats);
+		computer = new Computer(numOfBoats);
 		m_gameOver = false;
 		m_player_1Turn = 1;
 		if(m_opponent == 'A' || m_opponent == 'a')
@@ -72,6 +73,7 @@ Executive::~Executive()
 {
 	delete player_1;		//delete player1
 	delete player_2;		//delete player2
+	delete computer;
 }
 
 void Executive::game(int num)

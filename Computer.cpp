@@ -95,26 +95,34 @@ int Computer::getHitCoords_length()
 string Computer::guessCoords_Easy()
 {
     string coords;
-    bool doLoop = true;
-    while(doLoop == true)
+    while(true)
     {
         int x = rand() % 9 + 1;
         int y = rand() % 9 + 1;
         coords = convertCoords(x,y);
         bool alreadyGuessed = false;
-        for(int i=0; i < m_guessedCoords_length; i++)
+        if(m_guessedCoords_length != 0)
         {
-            if(coords == m_guessedCoords[i])
+            for(int i=0; i < m_guessedCoords_length; i++)
             {
-                alreadyGuessed = true;
+                if(coords == m_guessedCoords[i])
+                {
+                    alreadyGuessed = true;
+                    break;
+                }
+            }
+            if(alreadyGuessed == false)
+            {
+                m_guessedCoords[m_guessedCoords_length+1] = coords;
+                m_guessedCoords_length++;
                 break;
             }
         }
-        if(alreadyGuessed == false)
+        else
         {
-            m_guessedCoords[getGuessedCoords_length()+1] = coords;
+            m_guessedCoords[m_guessedCoords_length+1] = coords;
             m_guessedCoords_length++;
-            doLoop = false;
+            break;
         }
     }
     return(coords);
