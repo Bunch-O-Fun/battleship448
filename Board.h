@@ -66,11 +66,11 @@ class Board
                 * @throw None
                 */
 
-    void printMyScoreBoard();
+    void printMyScoreBoard(int num);
 		/**
                 * @pre None
                 * @post prints and updates the scoreboard
-                * @param None
+                * @param Takes in amount of ships
                 * @throw None
                 */
 		void printIntermission();

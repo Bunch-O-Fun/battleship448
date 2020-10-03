@@ -55,6 +55,7 @@ void Executive::game()
 				{
 					player_1->getBoard()->printShotBoard();
 					player_1->getBoard()->printMyBoard();
+					player_1->getBoard()->prinyMyScoreBoard();
 					std::cout << "Player 1: Where would you like to SHOOT: ";
 					std::getline(std::cin, guess);
 

@@ -55,53 +55,52 @@ void Board::printMyBoard()	//prints the player's board
 			std::cout << "\n\n";
 		}
 	}
-	printMyScoreBoard();
 }
 
-void Board::printMyScoreBoard()
+void Board::printMyScoreBoard(int num)
 {
 	std::cout<<"\n";
 	std::cout<<"=========SCOREBOARD==========\n";
 	std::cout<<"Ship Status: \n";
 
-		if (m_ship[0].isSunk() == 1) // checks if size 1 ship is sunk or not
+		if (m_ship[0].isSunk() == 1 && num >= 1) // checks if size 1 ship is sunk or not
 			{
 				std::cout<<"Size 1: Sunk\n";
 			}
-		else
+		else if (num >=1)
 		{
 			std::cout<<"Size 1: Alive\n";
 		}
 
-		if (m_ship[1].isSunk() == 1) // checks if size 2 ship is sunk or not
+		if (m_ship[1].isSunk() == 1 && num >= 2) // checks if size 2 ship is sunk or not
 		{
 			std::cout<<"Size 2: Sunk\n";
 		}
-		else
+		else if (num >=2)
 		{
 			std::cout<<"Size 2: Alive\n";
 		}
-		if (m_ship[2].isSunk() == 1) // checks if size 3 ship is sunk or not
+		if (m_ship[2].isSunk() == 1 && num >= 3) // checks if size 3 ship is sunk or not
 		{
 			std::cout<<"Size 3: Sunk\n";
 		}
-		else
+		else if (num >=3)
 		{
 			std::cout<<"Size 3: Alive\n";
 		}
-		if (m_ship[3].isSunk() == 1) // checks if size 4 ship is sunk or not
+		if (m_ship[3].isSunk() == 1 && num >= 4) // checks if size 4 ship is sunk or not
 		{
 			std::cout<<"Size 4: Sunk\n";
 		}
-		else
+		else if (num >=4)
 		{
 			std::cout<<"Size 4: Alive\n";
 		}
-		if (m_ship[4].isSunk() == 1) // checks if size 5 ship is sunk or not
+		if (m_ship[4].isSunk() == 1 && num >= 5) // checks if size 5 ship is sunk or not
 		{
 			std::cout<<"Size 5: Sunk\n";
 		}
-		else
+		else if (num>=5)
 		{
 			std::cout<<"Size 5: Alive\n";
 		}
@@ -278,7 +277,6 @@ void Board::setupBoard()
 			userGuess = " ";
 				do {
 					printMyBoard();
-					//printMyScoreBoard();
 					std::cout<<"Where would you like to place this ship of size 1? Enter your coordinate: (LETTER,NUMBER)\n";
 					std::getline(std::cin, userGuess);
 					std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);
@@ -370,6 +368,7 @@ void Board::setupBoard()
 					std::getline(std::cin, userDirection);
 				}
 			}while(!HorV);
+			printMyScoreBoard(numberOfShips);
 		}
 	}
 	std::cout << "Press Enter to go to the next Player's turn: ";
