@@ -1,0 +1,380 @@
+\hypertarget{class_board}{}\doxysection{Board Class Reference}
+\label{class_board}\index{Board@{Board}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_board_ac2c62e63df31bd62fd5623ba41017422}\label{class_board_ac2c62e63df31bd62fd5623ba41017422}} 
+string $\ast$$\ast$ {\bfseries get\+Fleet} ()
+\item 
+\mbox{\hyperlink{class_board_ac85b351f9ee9cc5cffca198e8da76c8b}{Board}} (int ship\+Num)
+\item 
+void \mbox{\hyperlink{class_board_a181c04f8528cf4ec3883f0d59c5f8c6a}{print\+Shot\+Board}} ()
+\item 
+void \mbox{\hyperlink{class_board_a8188ac00f5e89d6935474b916ab1e705}{print\+My\+Board}} ()
+\item 
+void \mbox{\hyperlink{class_board_ad72c07865afb7a783d2e71e1fe9ac3a3}{print\+My\+Score\+Board}} (int num)
+\item 
+void \mbox{\hyperlink{class_board_a1efd7e3974a87e3e52b68138dd390f71}{print\+Intermission}} ()
+\item 
+void \mbox{\hyperlink{class_board_a1cd2b7cdf7fdc4944c8cbb0b71b5cd4b}{set\+Numberof\+Ships}} (int shipnum)
+\item 
+int \mbox{\hyperlink{class_board_a63501a95954f1e0d4ebf6dbf1d0d139f}{get\+Numberof\+Ships}} () const
+\item 
+void \mbox{\hyperlink{class_board_af25a3e93240a41dc9dfeb6af06cf4d12}{setup\+Board}} (bool is\+Player)
+\item 
+void \mbox{\hyperlink{class_board_a25c56580203df5bd530e46341f75ff71}{update\+Shot\+Board}} (std\+::string user\+Guess, bool was\+Hit)
+\item 
+bool \mbox{\hyperlink{class_board_a3e5d884c4c736be9125f0b39dc7ab3cd}{update\+My\+Board}} (std\+::string user\+Guess)
+\item 
+bool \mbox{\hyperlink{class_board_a33b7189524a9ab6ec18d0939127d7817}{within\+Boundary}} (std\+::string user\+Guess)
+\item 
+bool \mbox{\hyperlink{class_board_a425dad04038ba0f3e1ef9c0f1b0926a4}{no\+Horizontal\+Collision}} (std\+::string user\+Guess, int ship\+Length)
+\item 
+bool \mbox{\hyperlink{class_board_ad72a686a82c3d8eedf1f91041dde460d}{no\+Vertical\+Collision}} (std\+::string user\+Guess, int ship\+Length)
+\item 
+\mbox{\hyperlink{class_ship}{Ship}} $\ast$ \mbox{\hyperlink{class_board_ad73db32692543c389e2484856176d955}{get\+Ship}} () const
+\item 
+string \mbox{\hyperlink{class_board_a7d561d011dc7a35935bd13d864ad6793}{convert\+Coords}} (int x, int y)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_board_ac85b351f9ee9cc5cffca198e8da76c8b}\label{class_board_ac85b351f9ee9cc5cffca198e8da76c8b}} 
+\index{Board@{Board}!Board@{Board}}
+\index{Board@{Board}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{Board()}{Board()}}
+{\footnotesize\ttfamily Board\+::\+Board (\begin{DoxyParamCaption}\item[{int}]{ship\+Num }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+constructor 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em ship\+Num} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_board_a7d561d011dc7a35935bd13d864ad6793}\label{class_board_a7d561d011dc7a35935bd13d864ad6793}} 
+\index{Board@{Board}!convertCoords@{convertCoords}}
+\index{convertCoords@{convertCoords}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{convertCoords()}{convertCoords()}}
+{\footnotesize\ttfamily string Board\+::convert\+Coords (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+converts a set of integer coordinates to a string 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em x,y} & coordinates \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_a63501a95954f1e0d4ebf6dbf1d0d139f}\label{class_board_a63501a95954f1e0d4ebf6dbf1d0d139f}} 
+\index{Board@{Board}!getNumberofShips@{getNumberofShips}}
+\index{getNumberofShips@{getNumberofShips}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{getNumberofShips()}{getNumberofShips()}}
+{\footnotesize\ttfamily int Board\+::get\+Numberof\+Ships (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+gets the number of ships 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_ad73db32692543c389e2484856176d955}\label{class_board_ad73db32692543c389e2484856176d955}} 
+\index{Board@{Board}!getShip@{getShip}}
+\index{getShip@{getShip}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{getShip()}{getShip()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ship}{Ship}} $\ast$ Board\+::get\+Ship (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+gets ship object 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_a425dad04038ba0f3e1ef9c0f1b0926a4}\label{class_board_a425dad04038ba0f3e1ef9c0f1b0926a4}} 
+\index{Board@{Board}!noHorizontalCollision@{noHorizontalCollision}}
+\index{noHorizontalCollision@{noHorizontalCollision}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{noHorizontalCollision()}{noHorizontalCollision()}}
+{\footnotesize\ttfamily bool Board\+::no\+Horizontal\+Collision (\begin{DoxyParamCaption}\item[{std\+::string}]{user\+Guess,  }\item[{int}]{ship\+Length }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+checks whether the horizontally placed ship will collide with another ship. Based on this, it returns true or false. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Guess,ship\+Length} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_ad72a686a82c3d8eedf1f91041dde460d}\label{class_board_ad72a686a82c3d8eedf1f91041dde460d}} 
+\index{Board@{Board}!noVerticalCollision@{noVerticalCollision}}
+\index{noVerticalCollision@{noVerticalCollision}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{noVerticalCollision()}{noVerticalCollision()}}
+{\footnotesize\ttfamily bool Board\+::no\+Vertical\+Collision (\begin{DoxyParamCaption}\item[{std\+::string}]{user\+Guess,  }\item[{int}]{ship\+Length }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+checks whether the vertically placed ship will collide with another ship. Based on this, it returns true or false 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Guess,ship\+Length} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_a1efd7e3974a87e3e52b68138dd390f71}\label{class_board_a1efd7e3974a87e3e52b68138dd390f71}} 
+\index{Board@{Board}!printIntermission@{printIntermission}}
+\index{printIntermission@{printIntermission}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{printIntermission()}{printIntermission()}}
+{\footnotesize\ttfamily void Board\+::print\+Intermission (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+prints and updates the scoreboard 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em Takes} & in amount of ships \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_a8188ac00f5e89d6935474b916ab1e705}\label{class_board_a8188ac00f5e89d6935474b916ab1e705}} 
+\index{Board@{Board}!printMyBoard@{printMyBoard}}
+\index{printMyBoard@{printMyBoard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{printMyBoard()}{printMyBoard()}}
+{\footnotesize\ttfamily void Board\+::print\+My\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+prints player\textquotesingle{}s board 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_ad72c07865afb7a783d2e71e1fe9ac3a3}\label{class_board_ad72c07865afb7a783d2e71e1fe9ac3a3}} 
+\index{Board@{Board}!printMyScoreBoard@{printMyScoreBoard}}
+\index{printMyScoreBoard@{printMyScoreBoard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{printMyScoreBoard()}{printMyScoreBoard()}}
+{\footnotesize\ttfamily void Board\+::print\+My\+Score\+Board (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+prints blank space to hide the board from the other player 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_a181c04f8528cf4ec3883f0d59c5f8c6a}\label{class_board_a181c04f8528cf4ec3883f0d59c5f8c6a}} 
+\index{Board@{Board}!printShotBoard@{printShotBoard}}
+\index{printShotBoard@{printShotBoard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{printShotBoard()}{printShotBoard()}}
+{\footnotesize\ttfamily void Board\+::print\+Shot\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+prints rival\textquotesingle{}s board 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_a1cd2b7cdf7fdc4944c8cbb0b71b5cd4b}\label{class_board_a1cd2b7cdf7fdc4944c8cbb0b71b5cd4b}} 
+\index{Board@{Board}!setNumberofShips@{setNumberofShips}}
+\index{setNumberofShips@{setNumberofShips}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{setNumberofShips()}{setNumberofShips()}}
+{\footnotesize\ttfamily void Board\+::set\+Numberof\+Ships (\begin{DoxyParamCaption}\item[{int}]{shipnum }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+sets the number of ships 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em an} & integer called shipnum \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_af25a3e93240a41dc9dfeb6af06cf4d12}\label{class_board_af25a3e93240a41dc9dfeb6af06cf4d12}} 
+\index{Board@{Board}!setupBoard@{setupBoard}}
+\index{setupBoard@{setupBoard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{setupBoard()}{setupBoard()}}
+{\footnotesize\ttfamily void Board\+::setup\+Board (\begin{DoxyParamCaption}\item[{bool}]{is\+Player }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+sets the board up for the players 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_a3e5d884c4c736be9125f0b39dc7ab3cd}\label{class_board_a3e5d884c4c736be9125f0b39dc7ab3cd}} 
+\index{Board@{Board}!updateMyBoard@{updateMyBoard}}
+\index{updateMyBoard@{updateMyBoard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{updateMyBoard()}{updateMyBoard()}}
+{\footnotesize\ttfamily bool Board\+::update\+My\+Board (\begin{DoxyParamCaption}\item[{std\+::string}]{user\+Guess }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Updates the player\textquotesingle{}s board 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Guess} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em If} & the user guesses a location that was shot before, a runtime error is thrown \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_a25c56580203df5bd530e46341f75ff71}\label{class_board_a25c56580203df5bd530e46341f75ff71}} 
+\index{Board@{Board}!updateShotBoard@{updateShotBoard}}
+\index{updateShotBoard@{updateShotBoard}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{updateShotBoard()}{updateShotBoard()}}
+{\footnotesize\ttfamily void Board\+::update\+Shot\+Board (\begin{DoxyParamCaption}\item[{std\+::string}]{user\+Guess,  }\item[{bool}]{was\+Hit }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+updates the shot board based on whether a location with a ship was hit or not 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Guess,was\+Hit} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_board_a33b7189524a9ab6ec18d0939127d7817}\label{class_board_a33b7189524a9ab6ec18d0939127d7817}} 
+\index{Board@{Board}!withinBoundary@{withinBoundary}}
+\index{withinBoundary@{withinBoundary}!Board@{Board}}
+\doxysubsubsection{\texorpdfstring{withinBoundary()}{withinBoundary()}}
+{\footnotesize\ttfamily bool Board\+::within\+Boundary (\begin{DoxyParamCaption}\item[{std\+::string}]{user\+Guess }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+checks if the guess is within bounds or not. Based on the check, it returns true or false. 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Guess} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em None} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Board.\+h\item 
+Board.\+cpp\end{DoxyCompactItemize}

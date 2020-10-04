@@ -1,0 +1,169 @@
+\hypertarget{class_player}{}\doxysection{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_aad2fa483ffff4f7851eb2213c5947bf4}{Player}} (int ships\+Num)
+\item 
+\mbox{\hyperlink{class_player_a749d2c00e1fe0f5c2746f7505a58c062}{$\sim$\+Player}} ()
+\item 
+int \mbox{\hyperlink{class_player_ae75bab87d12a30ef7d52dd020059b8e2}{get\+Num\+Of\+Boats}} ()
+\item 
+void \mbox{\hyperlink{class_player_a826d3f1c76e337d77f757f94167f8c70}{set\+Recent\+Guess}} (std\+::string guess)
+\item 
+std\+::string \mbox{\hyperlink{class_player_a9f5043558f0162d755fbe53619099310}{get\+Recent\+Guess}} () const
+\item 
+\mbox{\hyperlink{class_board}{Board}} $\ast$ \mbox{\hyperlink{class_player_abbaefa6b7365765cb2a2f6ea0a76cd82}{get\+Board}} () const
+\item 
+bool \mbox{\hyperlink{class_player_a34f714cf793e677149df266e512ca49f}{getting\+Shot}} (std\+::string guess)
+\item 
+void \mbox{\hyperlink{class_player_a6f3bee0abe9f199cc63c673d533a97c5}{shooting}} (string guess, bool hit)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_player_aad2fa483ffff4f7851eb2213c5947bf4}\label{class_player_aad2fa483ffff4f7851eb2213c5947bf4}} 
+\index{Player@{Player}!Player@{Player}}
+\index{Player@{Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{Player()}{Player()}}
+{\footnotesize\ttfamily Player\+::\+Player (\begin{DoxyParamCaption}\item[{int}]{ships\+Num }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+none 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+initializes num\+Of\+Ships and players board 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em number} & of ships \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_a749d2c00e1fe0f5c2746f7505a58c062}\label{class_player_a749d2c00e1fe0f5c2746f7505a58c062}} 
+\index{Player@{Player}!````~Player@{$\sim$Player}}
+\index{````~Player@{$\sim$Player}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{$\sim$Player()}{~Player()}}
+{\footnotesize\ttfamily Player\+::$\sim$\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+none 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+player object deleted 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_abbaefa6b7365765cb2a2f6ea0a76cd82}\label{class_player_abbaefa6b7365765cb2a2f6ea0a76cd82}} 
+\index{Player@{Player}!getBoard@{getBoard}}
+\index{getBoard@{getBoard}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getBoard()}{getBoard()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_board}{Board}} $\ast$ Player\+::get\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyPrecond}{Precondition}
+none 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+Players board is returned 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_ae75bab87d12a30ef7d52dd020059b8e2}\label{class_player_ae75bab87d12a30ef7d52dd020059b8e2}} 
+\index{Player@{Player}!getNumOfBoats@{getNumOfBoats}}
+\index{getNumOfBoats@{getNumOfBoats}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getNumOfBoats()}{getNumOfBoats()}}
+{\footnotesize\ttfamily int Player\+::get\+Num\+Of\+Boats (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+player board is populated with boats 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+returns number of boats that the player still has 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_a9f5043558f0162d755fbe53619099310}\label{class_player_a9f5043558f0162d755fbe53619099310}} 
+\index{Player@{Player}!getRecentGuess@{getRecentGuess}}
+\index{getRecentGuess@{getRecentGuess}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{getRecentGuess()}{getRecentGuess()}}
+{\footnotesize\ttfamily std\+::string Player\+::get\+Recent\+Guess (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyPrecond}{Precondition}
+there exists a recent guess 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+recent guess is returned 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_a34f714cf793e677149df266e512ca49f}\label{class_player_a34f714cf793e677149df266e512ca49f}} 
+\index{Player@{Player}!gettingShot@{gettingShot}}
+\index{gettingShot@{gettingShot}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{gettingShot()}{gettingShot()}}
+{\footnotesize\ttfamily bool Player\+::getting\+Shot (\begin{DoxyParamCaption}\item[{std\+::string}]{guess }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+none 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+returns if the location that was guessed is within the boundary of the board 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em location} & of guess \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_a826d3f1c76e337d77f757f94167f8c70}\label{class_player_a826d3f1c76e337d77f757f94167f8c70}} 
+\index{Player@{Player}!setRecentGuess@{setRecentGuess}}
+\index{setRecentGuess@{setRecentGuess}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{setRecentGuess()}{setRecentGuess()}}
+{\footnotesize\ttfamily void Player\+::set\+Recent\+Guess (\begin{DoxyParamCaption}\item[{std\+::string}]{guess }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+none 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+recent guess is updated 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em location} & of guess \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_player_a6f3bee0abe9f199cc63c673d533a97c5}\label{class_player_a6f3bee0abe9f199cc63c673d533a97c5}} 
+\index{Player@{Player}!shooting@{shooting}}
+\index{shooting@{shooting}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{shooting()}{shooting()}}
+{\footnotesize\ttfamily void Player\+::shooting (\begin{DoxyParamCaption}\item[{string}]{guess,  }\item[{bool}]{hit }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+location of guess must be valid 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+updates this players board with location of guess marked 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em location} & of guess and boolean whose value indicated whether the location is valid \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Player.\+h\item 
+Player.\+cpp\end{DoxyCompactItemize}

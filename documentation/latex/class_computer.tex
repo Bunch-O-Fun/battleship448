@@ -1,0 +1,236 @@
+\hypertarget{class_computer}{}\doxysection{Computer Class Reference}
+\label{class_computer}\index{Computer@{Computer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_computer_af8f6720660e9c1f9aa8830fd708f42cc}{Computer}} (int num\+Ships)
+\item 
+\mbox{\hyperlink{class_computer_a633f86288c20c5aa1eed7f14fb069272}{$\sim$\+Computer}} ()
+\item 
+string \mbox{\hyperlink{class_computer_aed8e230f0c93621d4bccf3568a0203c2}{convert\+Coords}} (int x, int y)
+\item 
+int \mbox{\hyperlink{class_computer_adf3650f0f98453c4c6f3091fe7e828cc}{get\+Num\+Ships}} ()
+\item 
+\mbox{\hyperlink{class_board}{Board}} $\ast$ \mbox{\hyperlink{class_computer_aa04e7e47bb72ed9a8d8285342d5f5156}{get\+Board}} ()
+\item 
+string $\ast$ \mbox{\hyperlink{class_computer_a868c01cebfede7cfaabd282e0035e5db}{get\+Guessed\+Coords}} ()
+\item 
+int \mbox{\hyperlink{class_computer_a59e0470713feb3f41012a4674b06068f}{get\+Guessed\+Coords\+\_\+length}} ()
+\item 
+string $\ast$$\ast$ \mbox{\hyperlink{class_computer_a56c20f95330cb5c2f50ece3b5d4e755e}{get\+Hit\+Coords}} ()
+\item 
+int \mbox{\hyperlink{class_computer_a42b4b041159281685ad46fd7b5fd0cb6}{get\+Hit\+Coords\+\_\+length}} ()
+\item 
+string \mbox{\hyperlink{class_computer_abefa3d2cef8c236f29de216d80ad19eb}{guess\+Coords\+\_\+\+Easy}} ()
+\item 
+string \mbox{\hyperlink{class_computer_ab7e1cd3be178a81fa9b8e41272b039dd}{guess\+Coords\+\_\+\+Medium}} ()
+\item 
+string \mbox{\hyperlink{class_computer_a108a62c9cd8503c3b95475cdaf139c1d}{guess\+Coords\+\_\+\+Hard}} ()
+\item 
+void \mbox{\hyperlink{class_computer_a32d2646f03719210af1a5337896628c6}{sethit\+Coords}} (string $\ast$$\ast$hit)
+\item 
+bool \mbox{\hyperlink{class_computer_a8978ab56a93f4f55cfe4d72db0fa6a60}{search\+Hits}} (string guess)
+\item 
+bool \mbox{\hyperlink{class_computer_a9b2f5b53f34f58d1f363b7ae8c5c4c3d}{get\+Next\+Attack}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_computer_af8f6720660e9c1f9aa8830fd708f42cc}\label{class_computer_af8f6720660e9c1f9aa8830fd708f42cc}} 
+\index{Computer@{Computer}!Computer@{Computer}}
+\index{Computer@{Computer}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{Computer()}{Computer()}}
+{\footnotesize\ttfamily Computer\+::\+Computer (\begin{DoxyParamCaption}\item[{int}]{num\+Ships }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\+: \mbox{\hyperlink{class_computer}{Computer}} class constructor 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: Creates a new board for the computer and an array of guessed coordinates 
+\end{DoxyPostcond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & num\+Ships \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_computer_a633f86288c20c5aa1eed7f14fb069272}\label{class_computer_a633f86288c20c5aa1eed7f14fb069272}} 
+\index{Computer@{Computer}!````~Computer@{$\sim$Computer}}
+\index{````~Computer@{$\sim$Computer}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{$\sim$Computer()}{~Computer()}}
+{\footnotesize\ttfamily Computer\+::$\sim$\+Computer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\+: \mbox{\hyperlink{class_computer}{Computer}} class destructor 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+\+: 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_computer_aed8e230f0c93621d4bccf3568a0203c2}\label{class_computer_aed8e230f0c93621d4bccf3568a0203c2}} 
+\index{Computer@{Computer}!convertCoords@{convertCoords}}
+\index{convertCoords@{convertCoords}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{convertCoords()}{convertCoords()}}
+{\footnotesize\ttfamily string Computer\+::convert\+Coords (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & valid coordinates \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+: a string of coordinates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_computer_aa04e7e47bb72ed9a8d8285342d5f5156}\label{class_computer_aa04e7e47bb72ed9a8d8285342d5f5156}} 
+\index{Computer@{Computer}!getBoard@{getBoard}}
+\index{getBoard@{getBoard}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{getBoard()}{getBoard()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_board}{Board}} $\ast$ Computer\+::get\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\+: board must exist 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+\+: returns the computer board 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_computer_a868c01cebfede7cfaabd282e0035e5db}\label{class_computer_a868c01cebfede7cfaabd282e0035e5db}} 
+\index{Computer@{Computer}!getGuessedCoords@{getGuessedCoords}}
+\index{getGuessedCoords@{getGuessedCoords}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{getGuessedCoords()}{getGuessedCoords()}}
+{\footnotesize\ttfamily string $\ast$ Computer\+::get\+Guessed\+Coords (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\+: coordinates must be guessed 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+\+: returns an array of guessed coordinates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_computer_a59e0470713feb3f41012a4674b06068f}\label{class_computer_a59e0470713feb3f41012a4674b06068f}} 
+\index{Computer@{Computer}!getGuessedCoords\_length@{getGuessedCoords\_length}}
+\index{getGuessedCoords\_length@{getGuessedCoords\_length}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{getGuessedCoords\_length()}{getGuessedCoords\_length()}}
+{\footnotesize\ttfamily int Computer\+::get\+Guessed\+Coords\+\_\+length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\+: coordinates must be guessed 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+\+: returns the amount of coordinates in the guessed\+Coords array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_computer_a56c20f95330cb5c2f50ece3b5d4e755e}\label{class_computer_a56c20f95330cb5c2f50ece3b5d4e755e}} 
+\index{Computer@{Computer}!getHitCoords@{getHitCoords}}
+\index{getHitCoords@{getHitCoords}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{getHitCoords()}{getHitCoords()}}
+{\footnotesize\ttfamily string $\ast$$\ast$ Computer\+::get\+Hit\+Coords (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\+: coordinates must be guessed 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+\+: returns a 2D array of hit coordinates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_computer_a42b4b041159281685ad46fd7b5fd0cb6}\label{class_computer_a42b4b041159281685ad46fd7b5fd0cb6}} 
+\index{Computer@{Computer}!getHitCoords\_length@{getHitCoords\_length}}
+\index{getHitCoords\_length@{getHitCoords\_length}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{getHitCoords\_length()}{getHitCoords\_length()}}
+{\footnotesize\ttfamily int Computer\+::get\+Hit\+Coords\+\_\+length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\+: array must exist 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+\+: returns the amount of coordinates in the hit\+Coords array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_computer_a9b2f5b53f34f58d1f363b7ae8c5c4c3d}\label{class_computer_a9b2f5b53f34f58d1f363b7ae8c5c4c3d}} 
+\index{Computer@{Computer}!getNextAttack@{getNextAttack}}
+\index{getNextAttack@{getNextAttack}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{getNextAttack()}{getNextAttack()}}
+{\footnotesize\ttfamily bool Computer\+::get\+Next\+Attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+\+:true if can attack in a direction 
+\end{DoxyReturn}
+\begin{DoxyPostcond}{Postcondition}
+\+: attackX and Y are set to next available attack position 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{class_computer_adf3650f0f98453c4c6f3091fe7e828cc}\label{class_computer_adf3650f0f98453c4c6f3091fe7e828cc}} 
+\index{Computer@{Computer}!getNumShips@{getNumShips}}
+\index{getNumShips@{getNumShips}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{getNumShips()}{getNumShips()}}
+{\footnotesize\ttfamily int Computer\+::get\+Num\+Ships (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\+: ship must be placed 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+\+: number of ships on the board 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_computer_abefa3d2cef8c236f29de216d80ad19eb}\label{class_computer_abefa3d2cef8c236f29de216d80ad19eb}} 
+\index{Computer@{Computer}!guessCoords\_Easy@{guessCoords\_Easy}}
+\index{guessCoords\_Easy@{guessCoords\_Easy}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{guessCoords\_Easy()}{guessCoords\_Easy()}}
+{\footnotesize\ttfamily string Computer\+::guess\+Coords\+\_\+\+Easy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPostcond}{Postcondition}
+\+: guesses random coordinates on the board to be hit 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+\+: returns a string of a coordinate to be hit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_computer_a108a62c9cd8503c3b95475cdaf139c1d}\label{class_computer_a108a62c9cd8503c3b95475cdaf139c1d}} 
+\index{Computer@{Computer}!guessCoords\_Hard@{guessCoords\_Hard}}
+\index{guessCoords\_Hard@{guessCoords\_Hard}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{guessCoords\_Hard()}{guessCoords\_Hard()}}
+{\footnotesize\ttfamily string Computer\+::guess\+Coords\+\_\+\+Hard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPostcond}{Postcondition}
+\+: shoots at a ship coordinate, not really a guess 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+\+: returns a string of a coordinate to be hit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_computer_ab7e1cd3be178a81fa9b8e41272b039dd}\label{class_computer_ab7e1cd3be178a81fa9b8e41272b039dd}} 
+\index{Computer@{Computer}!guessCoords\_Medium@{guessCoords\_Medium}}
+\index{guessCoords\_Medium@{guessCoords\_Medium}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{guessCoords\_Medium()}{guessCoords\_Medium()}}
+{\footnotesize\ttfamily string Computer\+::guess\+Coords\+\_\+\+Medium (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyPostcond}{Postcondition}
+\+: guesses random coordinates on the board to be hit After it hits a ship, it checks around nearby coordinates until the ship is sunk 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+\+: returns a string of a coordinate to be hit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_computer_a8978ab56a93f4f55cfe4d72db0fa6a60}\label{class_computer_a8978ab56a93f4f55cfe4d72db0fa6a60}} 
+\index{Computer@{Computer}!searchHits@{searchHits}}
+\index{searchHits@{searchHits}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{searchHits()}{searchHits()}}
+{\footnotesize\ttfamily bool Computer\+::search\+Hits (\begin{DoxyParamCaption}\item[{string}]{guess }\end{DoxyParamCaption})}
+
+\begin{DoxyPrecond}{Precondition}
+\+: have array of player\textquotesingle{}s coordinates 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em } & string of the coord you want to search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\+:true if that coord is a player coordinate 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_computer_a32d2646f03719210af1a5337896628c6}\label{class_computer_a32d2646f03719210af1a5337896628c6}} 
+\index{Computer@{Computer}!sethitCoords@{sethitCoords}}
+\index{sethitCoords@{sethitCoords}!Computer@{Computer}}
+\doxysubsubsection{\texorpdfstring{sethitCoords()}{sethitCoords()}}
+{\footnotesize\ttfamily void Computer\+::sethit\+Coords (\begin{DoxyParamCaption}\item[{string $\ast$$\ast$}]{hit }\end{DoxyParamCaption})}
+
+\begin{DoxyPostcond}{Postcondition}
+\+: declares a coordinate to be hit 
+\end{DoxyPostcond}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Computer.\+h\item 
+Computer.\+cpp\end{DoxyCompactItemize}

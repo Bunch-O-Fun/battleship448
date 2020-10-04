@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['game_8',['game',['../class_executive.html#ad793a06694270d9ba64fcb44c02fea5b',1,'Executive']]],
+  ['getboard_9',['getBoard',['../class_computer.html#aa04e7e47bb72ed9a8d8285342d5f5156',1,'Computer::getBoard()'],['../class_player.html#abbaefa6b7365765cb2a2f6ea0a76cd82',1,'Player::getBoard()']]],
+  ['getcoordinate_10',['getCoordinate',['../class_ship.html#a3bd865d1569ab6a2da4ee4cad00801ca',1,'Ship']]],
+  ['getdamage_11',['getDamage',['../class_ship.html#a1ac6b66776e15aa681922c487d12a9a1',1,'Ship']]],
+  ['getguessedcoords_12',['getGuessedCoords',['../class_computer.html#a868c01cebfede7cfaabd282e0035e5db',1,'Computer']]],
+  ['getguessedcoords_5flength_13',['getGuessedCoords_length',['../class_computer.html#a59e0470713feb3f41012a4674b06068f',1,'Computer']]],
+  ['gethitcoords_14',['getHitCoords',['../class_computer.html#a56c20f95330cb5c2f50ece3b5d4e755e',1,'Computer']]],
+  ['gethitcoords_5flength_15',['getHitCoords_length',['../class_computer.html#a42b4b041159281685ad46fd7b5fd0cb6',1,'Computer']]],
+  ['getlength_16',['getLength',['../class_ship.html#a5c36a859d4600ba27c091fa9254faadd',1,'Ship']]],
+  ['getnextattack_17',['getNextAttack',['../class_computer.html#a9b2f5b53f34f58d1f363b7ae8c5c4c3d',1,'Computer']]],
+  ['getnumberofships_18',['getNumberofShips',['../class_board.html#a63501a95954f1e0d4ebf6dbf1d0d139f',1,'Board']]],
+  ['getnumofboats_19',['getNumOfBoats',['../class_player.html#ae75bab87d12a30ef7d52dd020059b8e2',1,'Player']]],
+  ['getnumships_20',['getNumShips',['../class_computer.html#adf3650f0f98453c4c6f3091fe7e828cc',1,'Computer']]],
+  ['getrecentguess_21',['getRecentGuess',['../class_player.html#a9f5043558f0162d755fbe53619099310',1,'Player']]],
+  ['getship_22',['getShip',['../class_board.html#ad73db32692543c389e2484856176d955',1,'Board']]],
+  ['gettingshot_23',['gettingShot',['../class_player.html#a34f714cf793e677149df266e512ca49f',1,'Player']]],
+  ['guesscoords_5feasy_24',['guessCoords_Easy',['../class_computer.html#abefa3d2cef8c236f29de216d80ad19eb',1,'Computer']]],
+  ['guesscoords_5fhard_25',['guessCoords_Hard',['../class_computer.html#a108a62c9cd8503c3b95475cdaf139c1d',1,'Computer']]],
+  ['guesscoords_5fmedium_26',['guessCoords_Medium',['../class_computer.html#ab7e1cd3be178a81fa9b8e41272b039dd',1,'Computer']]]
+];
