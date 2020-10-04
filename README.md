@@ -1,6 +1,6 @@
 BATTLESHIP 
 ---------
-PROJECT 1 - EECS 448 at the University of Kansas (FALL 2020)
+PROJECT 2 - EECS 448 at the University of Kansas (FALL 2020)
 
 CONTENTS OF THIS FILE
 ---------------------
