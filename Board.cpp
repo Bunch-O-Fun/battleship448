@@ -282,7 +282,7 @@ string Board::convertCoords(int x, int y) //converts coordinates from two intger
     string convertedCoords = "";
     if(x < 0 || x > 9)
     {
-        //coordinates passed in will only be in the range 0 to 9 thanks to rand() function
+        //coordinates passed in will only be in the range 1 to 9 thanks to rand() function
     }
     else if(x == 1)
     {
