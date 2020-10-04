@@ -15,8 +15,15 @@ class Computer
         int m_guessedCoords_length = 0; // keeps track of the number of guessed coordinates that have been put in the array
         string** m_hitCoords = nullptr; // stores the hit coordinates in an array of strings
         int m_hitCoords_length = 0; // keeps track of the number of hit coordinates that have been put in the array
-        int* m_numPlayerShips;
+        //int* m_numPlayerShips;
         int m_expectedNumShips;
+        char m_direction = 'U';
+        bool m_notSunk = false;
+        int originX;
+        int originY;
+        int attackX;
+        int attackY;
+        int m_shipsAlive;
     public:
         /**
 	      * @pre: Computer class constructor
@@ -27,7 +34,7 @@ class Computer
 
         /**
 	      * @pre: Computer class destructor
-	      * @post: 
+	      * @post:
 	      */
         ~Computer();
         /**
@@ -85,5 +92,7 @@ class Computer
           * @post: declares a coordinate to be hit
 	      */
         void sethitCoords(string** hit);
+        bool searchHits(string guess);
+        bool getNextAttack();
 };
 #endif
