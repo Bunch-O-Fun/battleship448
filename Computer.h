@@ -18,18 +18,72 @@ class Computer
         int* m_numPlayerShips;
         int m_expectedNumShips;
     public:
+        /**
+	      * @pre: Computer class constructor
+	      * @post: Creates a new board for the computer and an array of guessed coordinates
+	      * @param: numShips
+	      */
         Computer(int numShips);
+
+        /**
+	      * @pre: Computer class destructor
+	      * @post: 
+	      */
         ~Computer();
+        /**
+	      * @param: valid coordinates
+          * @return: a string of coordinates
+	      */
         string convertCoords(int x, int y);
+        /**
+          * @pre: ship must be placed
+          * @return: number of ships on the board
+	      */
         int getNumShips();
+        /**
+          * @pre: board must exist
+          * @return: returns the computer board
+	      */
         Board* getBoard();
+        /**
+          * @pre: coordinates must be guessed
+          * @return: returns an array of guessed coordinates
+	      */
         string* getGuessedCoords();
+        /**
+          * @pre: coordinates must be guessed
+          * @return: returns the amount of coordinates in the guessedCoords array
+	      */
         int getGuessedCoords_length();
+        /**
+          * @pre: coordinates must be guessed
+          * @return: returns a 2D array of hit coordinates
+	      */
         string** getHitCoords();
+        /**
+          * @pre: array must exist
+          * @return: returns the amount of coordinates in the hitCoords array
+	      */
         int getHitCoords_length();
+        /**
+          * @post: guesses random coordinates on the board to be hit
+          * @return: returns a string of a coordinate to be hit
+	      */
         string guessCoords_Easy();
+        /**
+          * @post: guesses random coordinates on the board to be hit
+          *        After it hits a ship, it checks around nearby coordinates until the ship is sunk
+          * @return: returns a string of a coordinate to be hit
+	      */
         string guessCoords_Medium();
+        /**
+          * @post: shoots at a ship coordinate, not really a guess
+          * @return: returns a string of a coordinate to be hit
+	      */
         string guessCoords_Hard();
+        /**
+          * @post: declares a coordinate to be hit
+	      */
         void sethitCoords(string** hit);
 };
 #endif
