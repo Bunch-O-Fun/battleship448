@@ -6,8 +6,7 @@
 #include "Board.h"
 #include <sstream>
 #include <limits>
-#include <cstdlib>
-
+#include <cstdlib> //used for the rand() to randomly generate coordinates for the computer to attack
 using namespace std;
 
 Board::Board(int shipnum)
@@ -27,57 +26,6 @@ Board::Board(int shipnum)
 		}
 	}
 }
-
-string convertCoords(int x, int y)
-{
-    string xCoord = "";
-    string yCoord = to_string(y);
-    string convertedCoords = "";
-    if(x < 0 || x > 9)
-    {
-        // some sort of error message
-    }
-    else if(x == 1)
-    {
-        xCoord = 'A';
-    }
-    else if(x == 2)
-    {
-        xCoord = 'B';
-    }
-    else if(x == 3)
-    {
-        xCoord = 'C';
-    }
-    else if(x == 4)
-    {
-        xCoord = 'D';
-    }
-    else if(x == 5)
-    {
-        xCoord = 'E';
-    }
-    else if(x == 6)
-    {
-        xCoord = 'F';
-    }
-    else if(x == 7)
-    {
-        xCoord = 'G';
-    }
-    else if(x == 8)
-    {
-        xCoord = 'H';
-    }
-    else if(x == 9)
-    {
-        xCoord = 'I';
-    }
-    convertedCoords += xCoord;
-    convertedCoords = convertedCoords + yCoord;
-    return(convertedCoords);
-}
-
 string** Board::getFleet(){
 	string** fleetList = new string*[5];
 	for (int i=0; i < 5; i++){
@@ -88,7 +36,6 @@ string** Board::getFleet(){
 	}
 	for(int i = 0; i < 5; i++){
 		int fill = 0;
-		
 		for(int y = 0; y < 9; y++){
 			for(int x = 0; x < 9; x++){
 				if (myBoard[x][y] == ship[i]){
@@ -100,25 +47,19 @@ string** Board::getFleet(){
 	}
 	return fleetList;
 } 
-
-
-
 Board::~Board()	//destructor to delete m_ship
 {
 	delete[] m_ship;
 }
-
 void Board::printMyBoard()	//prints the player's board
 {
 	std::cout << "\t\t\tYour board\n";
 	std::cout << "\t";
-
 	for(int i=0;i<9;i++)
 	{
 		std::cout << m_rowNames[i] << "\t";	//prints the columns
 	}
 	std::cout << "\n";
-
 	for(int i=0;i<9;i++)
 	{
 		std::cout << i+1;	//print the rows
@@ -136,13 +77,11 @@ void Board::printMyBoard()	//prints the player's board
 		}
 	}
 }
-
 void Board::printMyScoreBoard(int num)
 {
 	std::cout<<"\n";
 	std::cout<<"=========SCOREBOARD==========\n";
 	std::cout<<"Ship Status: \n";
-
 		if (m_ship[0].isSunk() == 1 && num >= 1) // checks if size 1 ship is sunk or not
 			{
 				std::cout<<"Size 1: Sunk\n";
@@ -151,7 +90,6 @@ void Board::printMyScoreBoard(int num)
 		{
 			std::cout<<"Size 1: Alive\n";
 		}
-
 		if (m_ship[1].isSunk() == 1 && num >= 2) // checks if size 2 ship is sunk or not
 		{
 			std::cout<<"Size 2: Sunk\n";
@@ -223,13 +161,12 @@ void Board::printShotBoard()	//prints rival board
 	std::cout << "\n\t\t\tYour Rival's board\n";
 	std::cout << '\t';
 	for(int i=0;i<9;i++)
-  {
-    std::cout << m_rowNames[i] << "\t";	//prints the column names
-  }
+	{
+		std::cout << m_rowNames[i] << "\t";	//prints the column names
+	}
 	std::cout << "\n";
-
-  for(int i=0;i<9;i++)
-  {
+	for(int i=0;i<9;i++)
+	{
 		std::cout << i+1;	//prints the row names
 		for(int j=0;j<9;j++)
 		{
@@ -243,7 +180,7 @@ void Board::printShotBoard()	//prints rival board
 		{
 			std::cout << "\n\n"; //space b/w rows
 		}
-  }
+	}
 }
 void Board::updateShotBoard(std::string userGuess, bool wasHit)
 {
@@ -281,10 +218,8 @@ void Board::guessConversion(std::string userGuess)
 	int temp = userGuess.at(1) - '0'; //convert ASCII to decimal
 	m_rowIndex = temp - 1; //sets the column user wants, -1 for computer scientist index :)
 }
-
 bool Board::withinBoundary(std::string userGuess) //true for userGuess within bounds of the board
 {
-
 	if(userGuess.length() != 2)
 		{
 			return false;
@@ -306,48 +241,48 @@ bool Board::noHorizontalCollision(std::string userGuess, int shipLength)
 {
 	guessConversion(userGuess);
 	for(int i = 0; i < shipLength; i++)
- {
-	if((0 <= m_rowIndex && m_rowIndex <= 8) && (0 <= m_columnIndex + i && m_columnIndex + i <= 8))	//checks indices within boundary
-		{
-		if(myBoard[m_rowIndex][m_columnIndex + i] != blueTilde)	//returns false if right indices are not water
-			{
-			return false;
-			}
-		}
-	else
 	{
-		return false;	//false if out of bounds
+		if((0 <= m_rowIndex && m_rowIndex <= 8) && (0 <= m_columnIndex + i && m_columnIndex + i <= 8))	//checks indices within boundary
+			{
+			if(myBoard[m_rowIndex][m_columnIndex + i] != blueTilde)	//returns false if right indices are not water
+				{
+				return false;
+				}
+			}
+		else
+		{
+			return false;	//false if out of bounds
+		}
 	}
- }
- return true;	//passed all checks, no collosion
+ 	return true;	//passed all checks, no collosion
 }
 bool Board::noVerticalCollision(std::string userGuess, int shipLength)
 {
 	guessConversion(userGuess);
 	for(int i = 0; i < shipLength; i++)
- {
-	if((0 <= m_rowIndex + i && m_rowIndex + i <= 8) && (0 <= m_columnIndex && m_columnIndex <= 8))
+ 	{
+		if((0 <= m_rowIndex + i && m_rowIndex + i <= 8) && (0 <= m_columnIndex && m_columnIndex <= 8))
 		{
-		if(myBoard[m_rowIndex + i][m_columnIndex] != blueTilde)	//false if not on water
+			if(myBoard[m_rowIndex + i][m_columnIndex] != blueTilde)	//false if not on water
 			{
-			return false;
+				return false;
 			}
 		}
-	else
-	{
-		return false;	//false if out of bounds
-	}
- }
- return true;	//if passes all checks, no cblank space to hide the board from the other playerollision
+		else
+		{
+			return false;	//false if out of bounds
+		}
+ 	}
+ 	return true;	//if passes all checks, no cblank space to hide the board from the other playerollision
 }
-string Board::convertCoords(int x, int y)
+string Board::convertCoords(int x, int y) //converts coordinates from two intger values to a string of the form "A1" or "C7"
 {
 	string xCoord = "";
     string yCoord = to_string(y);
     string convertedCoords = "";
     if(x < 0 || x > 9)
     {
-        // some sort of error message
+        //coordinates passed in will only be in the range 0 to 9 thanks to rand() function
     }
     else if(x == 1)
     {
@@ -389,7 +324,6 @@ string Board::convertCoords(int x, int y)
     convertedCoords = convertedCoords + yCoord;
     return(convertedCoords);
 }
-
 void Board::setupBoard(bool isPlayer)
 {
 	std::string userGuess;
@@ -543,7 +477,6 @@ void Board::setupBoard(bool isPlayer)
 							{
 								userGuess = convertCoords(rand()%9+1, rand()%9+1);
 							}
-
 							std::transform(userGuess.begin(), userGuess.end(),userGuess.begin(), ::toupper);	//converts guess to uppercase
 						}
 					}
@@ -565,8 +498,6 @@ void Board::setupBoard(bool isPlayer)
 		printIntermission();
 	}
 }
-
-
 void Board::setNumberofShips(int shipnum)
 {
 	numberOfShips = shipnum;
