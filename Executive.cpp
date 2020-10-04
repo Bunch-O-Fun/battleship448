@@ -75,7 +75,7 @@ Executive::~Executive()
 {
 	delete player_1;		//delete player1
 	delete player_2;		//delete player2
-	delete computer;
+	delete computer;		//delete computer
 }
 
 void Executive::game(int num)
