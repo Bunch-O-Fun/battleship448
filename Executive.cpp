@@ -164,9 +164,10 @@ void Executive::game(int num)
 	}
 	if(m_player_1Turn % 2 == 1) //player turn changes
 	{
-		player_2->getBoard()->printShotBoard();
-		player_2->getBoard()->printMyBoard();
-		player_2->getBoard()->printMyScoreBoard(num);
+		player_1->getBoard()->printShotBoard();
+		player_1->getBoard()->printMyBoard();
+		player_1->getBoard()->printMyScoreBoard(num);
+
 		if(isPlayer)
 		{
 			std::cout << "WINNER PLAYER 2!\n";
@@ -178,9 +179,9 @@ void Executive::game(int num)
 	}
 	else
 	{
-		player_1->getBoard()->printShotBoard();
-		player_1->getBoard()->printMyBoard();
-		player_1->getBoard()->printMyScoreBoard(num);
+		player_2->getBoard()->printShotBoard();
+		player_2->getBoard()->printMyBoard();
+		player_2->getBoard()->printMyScoreBoard(num);
 		std::cout << "WINNER PLAYER 1!\n";
 	}
 }
