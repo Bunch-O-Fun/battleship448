@@ -27,14 +27,27 @@ INSTALLATION:
         - Change directory to the one containing all the file
         - Type 'make' to initiate the makefile
         - type './bship' to run the program
+        - Follow on screen instructions
     
 MAINTAINERS:
 -----------
+    Updated by:
+    Dawson Kabler
+    Carter Harrod
+    Jarrett Zelif
+    Turner Graham
+    Liam Connolly
+
+    Originally by:
     Abhigyan Saxena
     Linh Nguyen
     Achyut Paudel
     Evelyn Thomas
     Xiaoyi Lu
+
+
+
+
 
 WORK CITED:
 ----------
