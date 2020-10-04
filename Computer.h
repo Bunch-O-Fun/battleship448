@@ -92,7 +92,16 @@ class Computer
           * @post: declares a coordinate to be hit
 	      */
         void sethitCoords(string** hit);
+        /**
+          * @pre: have array of player's coordinates
+          * @param: string of the coord you want to search
+          * @return:true if that coord is a player coordinate
+	      */
         bool searchHits(string guess);
+        /**
+          * @return:true if can attack in a direction
+          * @post: attackX and Y are set to next available attack position
+	      */
         bool getNextAttack();
 };
 #endif
