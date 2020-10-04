@@ -10,7 +10,6 @@
 #include <iostream>
 #include <string>
 #include <limits>
-
 using namespace std;
 
 class Board
@@ -36,7 +35,7 @@ class Board
 		Ship* m_ship = nullptr;
 
         public:
-        string** getFleet();
+                string** getFleet();
         	Board();
         	~Board();
 		/**
@@ -66,8 +65,7 @@ class Board
                 * @param None
                 * @throw None
                 */
-
-    void printMyScoreBoard(int num);
+                void printMyScoreBoard(int num);
 		/**
                 * @pre None
                 * @post prints and updates the scoreboard
@@ -95,7 +93,6 @@ class Board
                   * @param None
                   * @throw None
                   */
-                string convertCoords(int x, int y);
 		void setupBoard(bool isPlayer);
 		/**
                   * @pre None
@@ -139,5 +136,12 @@ class Board
                   * @throw None
                   */
 		Ship* getShip() const;
+                /**
+                  * @pre None
+                  * @post converts a set of integer coordinates to a string
+                  * @param x, y coordinates
+                  * @throw None
+                  */
+                string convertCoords(int x, int y);
 };
 #endif
