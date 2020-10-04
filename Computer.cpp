@@ -8,19 +8,24 @@ using namespace std;
 
 Computer::Computer(int numShips)
 {
+    srand(time(NULL));
     m_board = new Board(numShips);
     m_numShips = numShips;
-    m_guessedCoords = new string[81]; // maximum number of coordinates that can be guessed is 9x9=81
+    m_shipsAlive = numShips;
+    m_guessedCoords = new string[81]; // maximum number of coordinates that can be guessed is 9x9=81'
+    for (int i = 0; i < 81; i++){
+      m_guessedCoords[i] = "";
+    }
     //m_hitCoords = new string[15]; // maximum number of coordinates that can be hit is 15, when each player has 5 ships
 }
 Computer::~Computer()
 {
     delete m_board;
-    delete m_guessedCoords;
+    delete [] m_guessedCoords;
     for (int i = 0; i < 5; i++){
-        delete m_hitCoords[i];
+        delete [] m_hitCoords[i];
     }
-    delete m_hitCoords;
+    delete [] m_hitCoords;
 }
 string Computer::convertCoords(int x, int y)
 {
@@ -132,10 +137,236 @@ string Computer::guessCoords_Easy()
 }
 string Computer::guessCoords_Medium()
 {
+  int checkAlive = 0;
+  for (int i = 0; i < m_numShips; i++){
+    int health = i + 1;
+    for (int j = 0; j < i + 1; j++){
+      for (int k = 0; k < 81; k++){
+        if(m_hitCoords[i][j] == m_guessedCoords[k]){
+          health--;
+          break;
+        }
+      }
+    }
+    if(health != 0){
+      checkAlive++;
+    }
+  }
+  if(checkAlive < m_shipsAlive){
+    m_notSunk = false;
+    m_shipsAlive--;
+  }
+  if(!m_notSunk){
+    originX = rand() % 9 + 1;
+    originY = rand() % 9 + 1;
+    string guess = convertCoords(originX,originY);
+    for(int i = 0; i < 81; i++){
+      if(m_guessedCoords[i] == guess){
+        originX = rand() % 9 + 1;
+        originY = rand() % 9 + 1;
+        guess = convertCoords(originX,originY);
+        i = 0;
+      }
+      if(m_guessedCoords[i] == ""){
+        m_guessedCoords[i] = guess;
+        break;
+      }
+    }
+    for (int i = 0; i < m_numShips; i++){
+      for (int j = 0; j < i + 1; j++){
+        if(m_hitCoords[i][j] == guess){
+          m_notSunk = true;
+          attackX = originX;
+          attackY = originY;
+          m_direction = 'U';
+          return(guess);
+        }
+      }
+    }
+    return(guess);
+  } else {
+    string coords = "";
+
+    if (m_direction == 'U'){
+      if(getNextAttack()){
+        for(int i = 0; i < 81; i++){
+          if(m_guessedCoords[i] == ""){
+            coords = convertCoords(attackX,attackY);
+            m_guessedCoords[i] = coords;
+            return(coords);
+          }
+        }
+      } else {
+        m_direction = 'D';
+        attackX = originX;
+        attackY = originY;
+        return(guessCoords_Medium());
+      }
+    } else if (m_direction == 'D'){
+      if(getNextAttack()){
+        for(int i = 0; i < 81; i++){
+          if(m_guessedCoords[i] == ""){
+            coords = convertCoords(attackX,attackY);
+            m_guessedCoords[i] = coords;
+            return(coords);
+          }
+        }
+      } else {
+        m_direction = 'R';
+        attackX = originX;
+        attackY = originY;
+        return(guessCoords_Medium());
+      }
+    } else if (m_direction == 'R'){
+      if(getNextAttack()){
+        for(int i = 0; i < 81; i++){
+          if(m_guessedCoords[i] == ""){
+            coords = convertCoords(attackX,attackY);
+            m_guessedCoords[i] = coords;
+            return(coords);
+          }
+        }
+      } else {
+        m_direction = 'L';
+        attackX = originX;
+        attackY = originY;
+        return(guessCoords_Medium());
+      }
+    } else if (m_direction == 'L'){
+        if(getNextAttack()){
+          for(int i = 0; i < 81; i++){
+            if(m_guessedCoords[i] == ""){
+              coords = convertCoords(attackX,attackY);
+              m_guessedCoords[i] = coords;
+              return(coords);
+            }
+          }
+        }
+
+
+    }
+      /*bool hitLocation = false;
+      coords = convertCoords(attackX, attackY - 1);
+      for (int i = 0; i < 81; i++){
+        if(coords == m_guessedCoords[i]){
+          hitLocation = true;
+          if(searchHits(coords)){
+asdfasdf
+          }
+
+        }
+      }*/
+  }
+  return("AAAAAHHHHHHH"); //should never happen
+}
+
+bool Computer::getNextAttack(){
+  bool nextAttack = true;
+    string coords = convertCoords(attackX, attackY);
+    if(m_direction == 'U'){
+      while(attackY > 0){
+        nextAttack = true;
+        string coords = convertCoords(attackX, attackY);
+        for (int i = 0; i < 81; i++){
+          if(coords == m_guessedCoords[i]){
+            if(!searchHits(coords)){
+              return false;
+            }
+            nextAttack = false;
+            attackY--;
+            break;
+          }
+        }
+        if(nextAttack){
+          return nextAttack;
+        }
+        if(attackY == 0){
+          return false;
+        }
+      }
+    } else if (m_direction == 'D'){
+      while(attackY < 10){
+        nextAttack = true;
+        string coords = convertCoords(attackX, attackY);
+        for (int i = 0; i < 81; i++){
+          if(coords == m_guessedCoords[i]){
+            if(!searchHits(coords)){
+              return false;
+            }
+            nextAttack = false;
+            attackY++;
+            break;
+          }
+        }
+        if(nextAttack){
+          return nextAttack;
+        }
+        if(attackY == 10){
+          return false;
+        }
+      }
+    } else if (m_direction == 'R'){
+      while(attackX < 10){
+        nextAttack = true;
+        string coords = convertCoords(attackX, attackY);
+        for (int i = 0; i < 81; i++){
+          if(coords == m_guessedCoords[i]){
+            if(!searchHits(coords)){
+              return false;
+            }
+            nextAttack = false;
+            attackX++;
+            break;
+          }
+        }
+        if(nextAttack){
+          return nextAttack;
+        }
+        if(attackX == 10){
+          return false;
+        }
+      }
+    }else if (m_direction == 'L'){
+      while(attackX > 0){
+        nextAttack = true;
+        string coords = convertCoords(attackX, attackY);
+        for (int i = 0; i < 81; i++){
+          if(coords == m_guessedCoords[i]){
+            if(!searchHits(coords)){
+              return false;
+            }
+            nextAttack = false;
+            attackX--;
+            break;
+          }
+        }
+        if(nextAttack){
+          return nextAttack;
+        }
+        if(attackX == 0){
+          return false;
+        }
+      }
+    }
+    cout << "something went wrong\n";
+    return(false);
 
 }
+
+bool Computer::searchHits(string guess){
+  for (int i = 0; i < m_numShips; i++){
+    for (int j = 0; j < i + 1; j++){
+      if(m_hitCoords[i][j] == guess){
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+
 string Computer::guessCoords_Hard()
-{ 
+{
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < i + 1; j++){
             if(m_hitCoords[i][j] != ""){

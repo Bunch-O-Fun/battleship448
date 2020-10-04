@@ -17,6 +17,13 @@ class Computer
         int m_hitCoords_length = 0; // keeps track of the number of hit coordinates that have been put in the array
         int* m_numPlayerShips;
         int m_expectedNumShips;
+        char m_direction = 'U';
+        bool m_notSunk = false;
+        int originX;
+        int originY;
+        int attackX;
+        int attackY;
+        int m_shipsAlive;
     public:
         Computer(int numShips);
         ~Computer();
@@ -31,5 +38,7 @@ class Computer
         string guessCoords_Medium();
         string guessCoords_Hard();
         void sethitCoords(string** hit);
+        bool searchHits(string guess);
+        bool getNextAttack();
 };
 #endif
